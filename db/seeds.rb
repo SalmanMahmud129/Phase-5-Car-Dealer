@@ -21,6 +21,7 @@ User.create!(
     first_name: "Salman", 
     last_name: "Mahmud",
     address: "31 Test Address, Test City, NY 12345",
+    phone_num: "111-111-1111",
     admin: true,
     email: "salspaypal@gmail.com"
 )
@@ -31,6 +32,7 @@ User.create!(
     first_name: "Test1", 
     last_name: "Test2",
     address: "47 Test Address 2, Test City 2, NY 12345",
+    phone_num: "222-222-2222",
     admin: false,
     email: "user1@gmail.com"
 )
@@ -42,6 +44,7 @@ User.create!(
     first_name: "Test3", 
     last_name: "Test4",
     address: "71 Test Address 4, Test City 6, NY 12345",
+    phone_num: "333-333-3333",
     admin: false,
     email: "user2@gmail.com"
 )

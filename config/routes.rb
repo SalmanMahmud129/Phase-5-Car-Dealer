@@ -5,6 +5,20 @@ Rails.application.routes.draw do
   # root "articles#index"
   
 
+  # Route for login session
+  post "/login", to: "sessions#create"
+
+  #Route for Auth
+  get "/auth", to: "users#show"
+
+  #Route for staying logged in
+  get "/me", to: "users#show"
+
+  #Route for logging out
+  delete "/logout", to: "sessions#destroy"
+
+  
+  
   get '/hello', to: 'application#hello_world'
 
 
