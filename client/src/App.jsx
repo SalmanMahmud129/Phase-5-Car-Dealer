@@ -7,18 +7,13 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Home from './components/Home';
 import About from './components/About';
+import LogoutScreen from './components/LogoutScreen';
 
 
 
 function App() {
 
-  const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
 
 
   return (
@@ -34,6 +29,9 @@ function App() {
         <Route path="/signup" element={<Signup />}/>
         
         <Route path="/about" element={<About />}/>
+
+        <Route path="/logged-out" element={<LogoutScreen />}/>
+
 
 
         <Route path="/testing" element={<h1>Test Route</h1>}/>

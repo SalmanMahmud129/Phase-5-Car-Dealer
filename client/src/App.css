@@ -85,3 +85,10 @@
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
+
+.login-error{
+  padding: 10px;
+  margin-left: 25%;
+  margin-right: 25%;
+  background-color: rgba(255, 0, 0, 0.2);
+}
