@@ -20,7 +20,7 @@ User.create!(
     password_digest: BCrypt::Password.create('AdminPassword'), 
     first_name: "Salman", 
     last_name: "Mahmud",
-    address: "31 Test Address, Test City, NY 12345"
+    address: "31 Test Address, Test City, NY 12345",
     admin: true,
     email: "salspaypal@gmail.com"
 )
@@ -30,7 +30,7 @@ User.create!(
     password_digest: BCrypt::Password.create('User1Password'), 
     first_name: "Test1", 
     last_name: "Test2",
-    address: "47 Test Address 2, Test City 2, NY 12345"
+    address: "47 Test Address 2, Test City 2, NY 12345",
     admin: false,
     email: "user1@gmail.com"
 )
@@ -41,10 +41,10 @@ User.create!(
     password_digest: BCrypt::Password.create('User2Password'), 
     first_name: "Test3", 
     last_name: "Test4",
-    address: "71 Test Address 4, Test City 6, NY 12345"
+    address: "71 Test Address 4, Test City 6, NY 12345",
     admin: false,
     email: "user2@gmail.com"
 )
 
-puts "seeding vehicles"
+# puts "seeding vehicles"
 
