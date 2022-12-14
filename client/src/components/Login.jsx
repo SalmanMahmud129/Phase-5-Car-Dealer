@@ -30,7 +30,7 @@ function Login() {
         .then(resp => {
             if(resp.ok){
                 resp.json().then(user => {
-                    sessionStorage.setItem("user_id", user.id)
+                    localStorage.setItem("user_id", user.id)
                     setErrors([])
                     navigate("/")
                 })

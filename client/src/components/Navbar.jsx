@@ -14,13 +14,13 @@ function Navbar() {
     fetch('/logout', {
       method: 'DELETE'
     })
-    .then(() => sessionStorage.clear())
+    .then(() => localStorage.clear())
 
     // navigate('/logout')
 
   }
 
-  const isLoggedIn= sessionStorage.getItem("user_id") ? 
+  const isLoggedIn= localStorage.getItem("user_id") ? 
     <li className='active'><NavLink to='logged-out'onClick={handleLogout}>Logout</NavLink></li>
     : <li className='active'><NavLink to='login'>Login</NavLink></li>
   return (

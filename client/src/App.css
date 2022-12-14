@@ -64,7 +64,7 @@
   /* padding: 5px; */
   /* margin-bottom: 10px; */
   margin: 2em auto;
-  border: 1px solid #ccc;
+  border: 3px solid #031eec;
   border-radius: 3px;
 }
 
@@ -72,7 +72,7 @@
   padding: 10px;
   background: #031eec;
   color: #fff;
-  border: 0;
+  border: 1px solid rgb(253, 253, 253);
   border-radius: 3px;
   cursor: pointer;
 }
@@ -92,3 +92,17 @@
   margin-right: 25%;
   background-color: rgba(255, 0, 0, 0.2);
 }
+
+/* sign up page */
+
+
+/* #firstColumn{
+  width: 250px;
+  float:left;
+  border: 1px solid red;
+} */
+
+/* #secondColumn{
+  border: 1px solid green;
+  overflow: hidden;
+} */
