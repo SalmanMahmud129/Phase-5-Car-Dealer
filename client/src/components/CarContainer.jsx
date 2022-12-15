@@ -1,8 +1,11 @@
 import React from 'react'
+import CarItem from './CarItem'
 
-function CarContainer() {
+function CarContainer({carData, setClickedCar}) {
+
+  const eachCar = carData.map(car => <CarItem key={car.id} car={car} setClickedCar={setClickedCar}/>)
   return (
-    <div>CarContainer</div>
+    <div>CarContainer {eachCar}</div>
   )
 }
 

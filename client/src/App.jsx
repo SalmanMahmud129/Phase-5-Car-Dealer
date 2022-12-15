@@ -8,12 +8,26 @@ import Signup from './components/Signup';
 import Home from './components/Home';
 import About from './components/About';
 import LogoutScreen from './components/LogoutScreen';
+import CarDetail from './components/CarDetail';
+import { useParams } from 'react-router-dom';
 
 
 
 function App() {
 
-  
+  const [carData, setCarData] = useState([])
+  const [clickedCar, setClickedCar] = useState(null)
+
+
+  useEffect(() =>{
+    fetch('/vehicles')
+    .then(resp => resp.json())
+    .then(cars => setCarData(cars))
+  },[])
+
+  console.log(carData)
+
+
 
 
 
@@ -24,7 +38,7 @@ function App() {
       <Navbar />
       <Routes>
 
-        <Route path="/" element={<Home />}/>
+        <Route path="/" element={<Home carData={carData} setClickedCar={setClickedCar}/>}/>
 
         <Route path="/login" element={<Login />}/>
 
@@ -34,7 +48,7 @@ function App() {
 
         <Route path="/logged-out" element={<LogoutScreen />}/>
 
-
+        <Route path="car-detail/:id" element={<CarDetail clickedCar={clickedCar}/>}/>
 
         <Route path="/testing" element={<h1>Test Route</h1>}/>
           
