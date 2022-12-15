@@ -9,8 +9,8 @@
 
 puts "destroying all..."
 User.destroy_all
-Review.destroy_all
 Vehicle.destroy_all
+Review.destroy_all
 
 
 puts "seeding users..."
