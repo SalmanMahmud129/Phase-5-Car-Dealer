@@ -10,6 +10,7 @@ import About from './components/About';
 import LogoutScreen from './components/LogoutScreen';
 import CarDetail from './components/CarDetail';
 import { useParams } from 'react-router-dom';
+// import StripeCheckout from 'react-stripe-checkout'
 
 
 
