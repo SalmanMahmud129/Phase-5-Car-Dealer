@@ -29,7 +29,7 @@ class VehiclesController < ApplicationController
     private 
 
     def find_vehicle
-        @vehicle = vehicle.find(params[:id])
+        @vehicle = Vehicle.find(params[:id])
     end
 
     def vehicle_params
