@@ -17,7 +17,7 @@ puts "seeding users..."
 
 User.create!(
     username: "Admin",
-    password_digest: BCrypt::Password.create('AdminPassword'), 
+    password: BCrypt::Password.create('AdminPassword'), 
     first_name: "Salman", 
     last_name: "Mahmud",
     address: "31 Test Address, Test City, NY 12345",
@@ -28,7 +28,7 @@ User.create!(
 
 User.create!(
     username: "User1",
-    password_digest: BCrypt::Password.create('User1Password'), 
+    password: BCrypt::Password.create('User1Password'), 
     first_name: "Test1", 
     last_name: "Test2",
     address: "47 Test Address 2, Test City 2, NY 12345",
@@ -40,7 +40,7 @@ User.create!(
 
 User.create!(
     username: "User2",
-    password_digest: BCrypt::Password.create('User2Password'), 
+    password: BCrypt::Password.create('User2Password'), 
     first_name: "Test3", 
     last_name: "Test4",
     address: "71 Test Address 4, Test City 6, NY 12345",
@@ -49,5 +49,27 @@ User.create!(
     email: "user2@gmail.com"
 )
 
-# puts "seeding vehicles"
+puts "seeding vehicles"
+
+
+Vehicle.create!(make: "Chevy", model: "Camaro", year:"2014")
+Vehicle.create!(make: "Ford", model: "Focus", year:"2010")
+Vehicle.create!(make: "Hyundai", model: "Palisade", year:"2023")
+Vehicle.create!(make: "Jeep", model: "Wrangler", year:"2017")
+Vehicle.create!(make: "Nissan", model: "Altima", year:"2015")
+Vehicle.create!(make: "Toyota", model: "Rav4", year:"2016")
+Vehicle.create!(make: "Honda", model: "Civic", year:"2014")
+
+
+puts "seeding reviews"
+
+Review.create!(star_rating: rand(1..5), content: "test", user_id: User.all.ids.sample, vehicle_id: Vehicle.all.ids.sample)
+Review.create!(star_rating: rand(1..5), content: "test2", user_id: User.all.ids.sample, vehicle_id: Vehicle.all.ids.sample)
+Review.create!(star_rating: rand(1..5), content: "test3", user_id: User.all.ids.sample, vehicle_id: Vehicle.all.ids.sample)
+Review.create!(star_rating: rand(1..5), content: "test4", user_id: User.all.ids.sample, vehicle_id: Vehicle.all.ids.sample)
+Review.create!(star_rating: rand(1..5), content: "test5", user_id: User.all.ids.sample, vehicle_id: Vehicle.all.ids.sample)
+Review.create!(star_rating: rand(1..5), content: "test6", user_id: User.all.ids.sample, vehicle_id: Vehicle.all.ids.sample)
+Review.create!(star_rating: rand(1..5), content: "test7", user_id: User.all.ids.sample, vehicle_id: Vehicle.all.ids.sample)
+
+
 

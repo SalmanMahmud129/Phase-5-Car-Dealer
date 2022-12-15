@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :users, only: [:index, :show, :create]
+  resources :vehicles
   
 
   # Route for login session
