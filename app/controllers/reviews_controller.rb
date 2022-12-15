@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-    before action :find_vehicle, only: [:show, :update, :destroy]
+    before_action :find_vehicle, only: [:show, :update, :destroy]
     
     def index 
         render json: Review.all, status: :ok
