@@ -15,9 +15,9 @@ Review.destroy_all
 
 puts "seeding users..."
 
-User.create!(
+admin = User.new(
     username: "Admin",
-    password: BCrypt::Password.create('AdminPassword'), 
+    password: 'AdminPassword', 
     first_name: "Salman", 
     last_name: "Mahmud",
     address: "31 Test Address, Test City, NY 12345",
@@ -25,10 +25,13 @@ User.create!(
     admin: true,
     email: "salspaypal@gmail.com"
 )
+admin.password_digest = BCrypt::Password.create(admin.password)
+admin.save
 
-User.create!(
+
+user = User.new(
     username: "User1",
-    password: BCrypt::Password.create('User1Password'), 
+    password: 'User1Password', 
     first_name: "Test1", 
     last_name: "Test2",
     address: "47 Test Address 2, Test City 2, NY 12345",
@@ -37,28 +40,31 @@ User.create!(
     email: "user1@gmail.com"
 )
 
+user.password_digest = BCrypt::Password.create(user.password)
+user.save
 
-User.create!(
-    username: "User2",
-    password: BCrypt::Password.create('User2Password'), 
-    first_name: "Test3", 
-    last_name: "Test4",
-    address: "71 Test Address 4, Test City 6, NY 12345",
-    phone_num: "333-333-3333",
-    admin: false,
-    email: "user2@gmail.com"
-)
+
+# User.create!(
+#     username: "User2",
+#     password: BCrypt::Password.create('User2Password'), 
+#     first_name: "Test3", 
+#     last_name: "Test4",
+#     address: "71 Test Address 4, Test City 6, NY 12345",
+#     phone_num: "333-333-3333",
+#     admin: false,
+#     email: "user2@gmail.com"
+# )
 
 puts "seeding vehicles"
 
 
-Vehicle.create!(make: "Chevy", model: "Camaro", year:"2014")
-Vehicle.create!(make: "Ford", model: "Focus", year:"2010")
-Vehicle.create!(make: "Hyundai", model: "Palisade", year:"2023")
-Vehicle.create!(make: "Jeep", model: "Wrangler", year:"2017")
-Vehicle.create!(make: "Nissan", model: "Altima", year:"2015")
-Vehicle.create!(make: "Toyota", model: "Rav4", year:"2016")
-Vehicle.create!(make: "Honda", model: "Civic", year:"2014")
+Vehicle.create!(make: "Chevy", model: "Camaro", year:"2014", price: rand(20000..80000))
+Vehicle.create!(make: "Ford", model: "Focus", year:"2010", price: rand(20000..80000))
+Vehicle.create!(make: "Hyundai", model: "Palisade", year:"2023", price: rand(20000..80000))
+Vehicle.create!(make: "Jeep", model: "Wrangler", year:"2017", price: rand(20000..80000))
+Vehicle.create!(make: "Nissan", model: "Altima", year:"2015", price: rand(20000..80000))
+Vehicle.create!(make: "Toyota", model: "Rav4", year:"2016", price: rand(20000..80000))
+Vehicle.create!(make: "Honda", model: "Civic", year:"2014", price: rand(20000..80000))
 
 
 puts "seeding reviews"

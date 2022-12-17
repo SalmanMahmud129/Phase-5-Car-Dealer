@@ -31,6 +31,7 @@ function Login() {
             if(resp.ok){
                 resp.json().then(user => {
                     localStorage.setItem("user_id", user.id)
+                    localStorage.setItem("isAdmin", user.admin)
                     setErrors([])
                     navigate("/")
                 })

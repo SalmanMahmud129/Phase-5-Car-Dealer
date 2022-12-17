@@ -18,7 +18,7 @@ function App() {
 
   const [carData, setCarData] = useState([])
   const [clickedCar, setClickedCar] = useState(null)
-
+  const [inCart, setInCart] = useState([])
 
   useEffect(() =>{
     fetch('/vehicles')
@@ -28,10 +28,17 @@ function App() {
 
   console.log(carData)
 
+  function addToCart(item){
+    setInCart([...inCart, item])
+  }
+  
+  function removeFromCart(removedItem){ 
+    const updatedCart = inCart.filter(item => item.id !== removedItem.id )
+    setInCart(updatedCart)
+  }
 
 
-
-
+  console.log("inCart", inCart)
 
   return (
     <div className="App">
@@ -49,7 +56,7 @@ function App() {
 
         <Route path="/logged-out" element={<LogoutScreen />}/>
 
-        <Route path="car-detail/:id" element={<CarDetail clickedCar={clickedCar}/>}/>
+        <Route path="car-detail/:id" element={<CarDetail inCart={inCart} addToCart={addToCart} removeFromCart={removeFromCart} clickedCar={clickedCar}/>}/>
 
         <Route path="/testing" element={<h1>Test Route</h1>}/>
           
