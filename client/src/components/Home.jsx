@@ -1,11 +1,11 @@
 import React from 'react'
 import CarContainer from './CarContainer'
 
-function Home({carData, setClickedCar}) {
+function Home({carData}) {
   return (
     <>
     <div>Home</div>
-    <CarContainer carData={carData} setClickedCar={setClickedCar}/>
+    <CarContainer carData={carData}/>
     </>
   )
 }

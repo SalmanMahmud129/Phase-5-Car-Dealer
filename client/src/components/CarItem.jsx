@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import CarDetail from './CarDetail'
 
 
-function CarItem({car, setClickedCar}) {
+function CarItem({car}) {
     const { make, model, year, reviews} = car
     const [showReviews, setShowReviews] = useState(false)
 
@@ -13,7 +13,7 @@ function CarItem({car, setClickedCar}) {
     <>
     <div>{make}, {model}, {year} -picture- 
      <NavLink to={`/car-detail/${car.id}`} >
-        <button onClick={() => setClickedCar(car)}>Details</button>
+        <button>Details</button>
     </NavLink >
     </div>
     </>

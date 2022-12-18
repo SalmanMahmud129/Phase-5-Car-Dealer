@@ -17,7 +17,7 @@ import { useParams } from 'react-router-dom';
 function App() {
 
   const [carData, setCarData] = useState([])
-  const [clickedCar, setClickedCar] = useState(null)
+  // const [clickedCar, setClickedCar] = useState(null)
   const [inCart, setInCart] = useState([])
 
   useEffect(() =>{
@@ -46,7 +46,7 @@ function App() {
       <Navbar />
       <Routes>
 
-        <Route path="/" element={<Home carData={carData} setClickedCar={setClickedCar}/>}/>
+        <Route path="/" element={<Home carData={carData}/>}/>
 
         <Route path="/login" element={<Login />}/>
 
@@ -56,7 +56,7 @@ function App() {
 
         <Route path="/logged-out" element={<LogoutScreen />}/>
 
-        <Route path="car-detail/:id" element={<CarDetail inCart={inCart} addToCart={addToCart} removeFromCart={removeFromCart} clickedCar={clickedCar}/>}/>
+        <Route path="car-detail/:id" element={<CarDetail inCart={inCart} addToCart={addToCart} removeFromCart={removeFromCart}/>}/>
 
         <Route path="/testing" element={<h1>Test Route</h1>}/>
           
