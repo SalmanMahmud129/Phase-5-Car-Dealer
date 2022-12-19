@@ -9,6 +9,7 @@ import Home from './components/Home';
 import About from './components/About';
 import LogoutScreen from './components/LogoutScreen';
 import CarDetail from './components/CarDetail';
+import ShoppingCart from './components/ShoppingCart';
 import { useParams } from 'react-router-dom';
 // import StripeCheckout from 'react-stripe-checkout'
 
@@ -59,6 +60,8 @@ function App() {
         <Route path="car-detail/:id" element={<CarDetail inCart={inCart} addToCart={addToCart} removeFromCart={removeFromCart}/>}/>
 
         <Route path="/testing" element={<h1>Test Route</h1>}/>
+
+        <Route path="/cart" element={<ShoppingCart inCart={inCart}/>} />
           
       </Routes>
       

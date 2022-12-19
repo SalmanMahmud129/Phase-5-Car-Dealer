@@ -29,6 +29,7 @@ function Navbar() {
         <li className="active"><NavLink to="/">Home</NavLink></li>
         {isLoggedIn}
         <li className="active"><NavLink to="/about">About</NavLink></li>
+        <li className="active"><NavLink to="/cart">Your Cart</NavLink></li>
         </ul>
     </nav>
   )

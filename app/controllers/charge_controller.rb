@@ -1,7 +1,7 @@
 require 'stripe'
 require 'dotenv'
 Dotenv.load
-Stripe.api_key = sk_test_51MFOSFLAqV9ULwXFy1FwH9vcj4TPWWAzNGwOXGodDNgzF8ruuRvnlZMqTvzvHknBMu0aQoDo1X7kRydtcJnFlNLg00BlcAl2uo
+Stripe.api_key = sk_test_51MFOSFLAqV9ULwXF5SMBw42Q4vcTLi2mvLjnVUT4hiD3jB7eiIZ6xOAbGimTpno0JVuwR70NTjZMQYIq3RrliqFg00XPDqZz9g
 
 class ChargeController < ApplicationController
     def create
