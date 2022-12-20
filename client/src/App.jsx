@@ -10,9 +10,15 @@ import About from './components/About';
 import LogoutScreen from './components/LogoutScreen';
 import CarDetail from './components/CarDetail';
 import ShoppingCart from './components/ShoppingCart';
+import PaymentForm from './components/PaymentForm';
 import { useParams } from 'react-router-dom';
-// import StripeCheckout from 'react-stripe-checkout'
+import PaymentCompletePage from './components/PaymentCompletePage';
+// import { loadStripe } from '@stripe/stripe-js'
+// import { Elements } from "@stripe/react-stripe-js";
 
+
+
+// const stripePromise = loadStripe("pk_test_51MFOSFLAqV9ULwXF0EyTx1sHxsFgGoe1avTYqps5RbblnbIcg1IEdi3zUtcAKrG6HCnoyYhJmkN3GQdp2cpVws5s00KvOjNszB")
 
 
 function App() {
@@ -62,6 +68,10 @@ function App() {
         <Route path="/testing" element={<h1>Test Route</h1>}/>
 
         <Route path="/cart" element={<ShoppingCart inCart={inCart}/>} />
+
+        <Route path="/payment-form" element={<PaymentForm />} />
+
+        <Route path="/payment-complete" element={<PaymentCompletePage />} />
           
       </Routes>
       

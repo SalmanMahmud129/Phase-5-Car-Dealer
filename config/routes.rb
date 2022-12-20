@@ -7,7 +7,13 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :create]
   resources :vehicles
   resources :reviews
+  resources :shopping_carts
+  resources :cart_vehicles
   
+
+  # Create payment intent
+
+  post "/create-payment-intent", to: "charge#create"
 
   # Route for login session
   post "/login", to: "sessions#create"

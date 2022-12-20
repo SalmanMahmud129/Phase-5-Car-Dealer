@@ -1,10 +1,11 @@
 require 'stripe'
 require 'dotenv'
 Dotenv.load
-Stripe.api_key = sk_test_51MFOSFLAqV9ULwXF5SMBw42Q4vcTLi2mvLjnVUT4hiD3jB7eiIZ6xOAbGimTpno0JVuwR70NTjZMQYIq3RrliqFg00XPDqZz9g
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
 
 class ChargeController < ApplicationController
     def create
+        binding.pry
         payment_intent = Stripe::PaymentIntent.create(
             amount: calculate_amount(params[:ids])
             currency: 'usd',
