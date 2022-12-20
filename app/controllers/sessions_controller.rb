@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
         # binding.pry
         if user&.authenticate(params[:password])
             session[:user_id] = user.id
+            session[:shopping_cart_id] = user.shopping_cart.id
             render json: user, status: :created
         else
             render json: {error: {login: "Invalid username or password"}}, status: :unauthorized

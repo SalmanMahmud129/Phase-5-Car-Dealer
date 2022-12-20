@@ -25,7 +25,7 @@ function App() {
 
   const [carData, setCarData] = useState([])
   // const [clickedCar, setClickedCar] = useState(null)
-  const [inCart, setInCart] = useState([])
+  const [currentCart, setCurrentCart] = useState([])
 
   useEffect(() =>{
     fetch('/vehicles')
@@ -35,17 +35,17 @@ function App() {
 
   console.log(carData)
 
-  function addToCart(item){
-    setInCart([...inCart, item])
-  }
+  // useEffect(() =>{
+  //   fetch('/cart_vehicles')
+  //   .then(resp => resp.json())
+  //   .then(cart_vehicles => setInCart(cart_vehicles))
+  // }, [])
+
   
-  function removeFromCart(removedItem){ 
-    const updatedCart = inCart.filter(item => item.id !== removedItem.id )
-    setInCart(updatedCart)
-  }
+  
 
 
-  console.log("inCart", inCart)
+  console.log("user's cart", currentCart)
 
   return (
     <div className="App">
@@ -53,7 +53,7 @@ function App() {
       <Navbar />
       <Routes>
 
-        <Route path="/" element={<Home carData={carData}/>}/>
+        <Route path="/" element={<Home carData={carData} setCurrentCart={setCurrentCart}/>}/>
 
         <Route path="/login" element={<Login />}/>
 
@@ -63,11 +63,11 @@ function App() {
 
         <Route path="/logged-out" element={<LogoutScreen />}/>
 
-        <Route path="car-detail/:id" element={<CarDetail inCart={inCart} addToCart={addToCart} removeFromCart={removeFromCart}/>}/>
+        <Route path="car-detail/:id" element={<CarDetail currentCart={currentCart} setCurrentCart={setCurrentCart}/>}/>
 
         <Route path="/testing" element={<h1>Test Route</h1>}/>
 
-        <Route path="/cart" element={<ShoppingCart inCart={inCart}/>} />
+        <Route path="/cart" element={<ShoppingCart currentCart={currentCart} setCurrentCart={setCurrentCart}/>} />
 
         <Route path="/payment-form" element={<PaymentForm />} />
 

@@ -11,6 +11,9 @@ class UsersController < ApplicationController
 
     def create 
         user = User.create!(user_params)
+        session[:user_id] = user.id
+        ShoppingCart.create!(user_id: user.id, total_amount: 0)
+        session[:shopping_cart_id] = user.shopping_cart.id
         render json: user, status: :created
     end
 

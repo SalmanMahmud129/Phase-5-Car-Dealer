@@ -3,10 +3,20 @@ import { useEffect } from 'react'
 import StripeCheckout from 'react-stripe-checkout'
 import { useParams } from 'react-router-dom'
 
-function CarDetail({addToCart, removeFromCart, inCart}) {
-   
+function CarDetail({currentCart, setCurrentCart}) {
+  
+  // maintaining all the vehicles in the cart on this page
+  useEffect(() =>{
+    fetch("/current-cart")
+    .then(resp => resp.json())
+    .then(cartData => {
+      console.log("cart data", cartData)
+      setCurrentCart(cartData)})
+  }, [])
+
+    console.log("current cart", currentCart)
     // console.log(clickedCar)
-    const [carDetails, setCarDetails] = useState([])
+    const [carDetails, setCarDetails] = useState({})
 
     const {id} = useParams()
 
@@ -17,9 +27,33 @@ function CarDetail({addToCart, removeFromCart, inCart}) {
     },[])
     console.log("car detail state in CarDetail.js", carDetails)
 
-    const addOrRemove = inCart.includes(carDetails) ? 
-    <button onClick={() => removeFromCart(carDetails)}>Remove From Cart</button> : 
-    <button onClick={() => addToCart(carDetails)}>Add to Cart</button>
+    
+  function addToCart(){
+    fetch("/add-to-cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({vehicle_id: id})
+
+    })
+    .then(resp => resp.json())
+    .then(addedCar => setCurrentCart({...currentCart, cart_vehicle: [...currentCart.cart_vehicles, addedCar]}))
+  }
+
+  function removeFromCart(removedItem){ 
+    const updatedCart = currentCart.filter(item => item.id !== removedItem.id )
+    // setCurrentCart(updatedCart)
+  }
+
+  console.log("Filter--------", currentCart.cart_vehicles?.filter(vehicle => {
+    console.log("Vehicle in filter -------------> ", vehicle)
+    return vehicle.vehicle_id === carDetails.id}))
+    // const addOrRemove = currentCart.cart_vehicles?.includes(carDetails)  ?
+  const addOrRemove = currentCart.cart_vehicles?.filter(vehicle => vehicle.vehicle_id === carDetails.id).length > 0 ?
+  <button onClick={() => removeFromCart(carDetails)}>Remove From Cart</button> : 
+  <button onClick={() => addToCart(carDetails)}>Add to Cart</button>
+ 
 
 //     const displayReviews = clickedCar.reviews.map(review =>{ 
 //         console.log("review", review.id)

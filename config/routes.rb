@@ -8,8 +8,18 @@ Rails.application.routes.draw do
   resources :vehicles
   resources :reviews
   resources :shopping_carts
-  resources :cart_vehicles
+  # resources :cart_vehicles
   
+  # get the users cart
+  get "/current-cart", to: "shopping_carts#current_cart"
+
+
+  
+  post "/add-to-cart", to: "cart_vehicles#create"
+
+  delete "/remove-from-cart", to: "cart_vehicles#destroy"
+
+
 
   # Create payment intent
 
