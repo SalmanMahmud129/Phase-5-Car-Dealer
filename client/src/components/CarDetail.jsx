@@ -55,7 +55,7 @@ function CarDetail({currentCart, setCurrentCart}) {
         return <span key={review.id}>Star Rating: {review.star_rating} Comment: {review.content}</span>  
 })
 
-
+console.log("cart total: ",currentCart.total_amount)
   return (
     <>
     {carDetails.make}

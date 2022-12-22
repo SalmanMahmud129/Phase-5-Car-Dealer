@@ -3,11 +3,12 @@ class SessionsController < ApplicationController
 
     def create
         user = User.find_by(username: params[:username])
-        # binding.pry
+        
         if user&.authenticate(params[:password])
             session[:user_id] = user.id
             session[:shopping_cart_id] = user.shopping_cart.id
             render json: user, status: :created
+            # byebug
         else
             render json: {error: {login: "Invalid username or password"}}, status: :unauthorized
         end

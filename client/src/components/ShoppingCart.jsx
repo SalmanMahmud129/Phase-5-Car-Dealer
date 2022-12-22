@@ -12,10 +12,6 @@ const stripePromise = loadStripe(PUBLIC_KEY)
 
 function ShoppingCart({currentCart, setCurrentCart}) {
 
-  // useEffect(() =>{
-  //   fetch()
-  // })
-
   const navigate = useNavigate()
 
   console.log("shopping cart page", currentCart)
@@ -23,17 +19,25 @@ function ShoppingCart({currentCart, setCurrentCart}) {
   const [clientSecret, setClientSecret] = useState("")
 
 
-  const displayItemsInCart = currentCart.cart_vehicles?.map(item =>{
+  const displayItemsInCart = currentCart.cart_vehicles?.map((item) =>{
     return (
-    <li>{item.make},{item.model} , {item.price} </li>
+    <li>
+    {item.vehicle.make ? item.vehicle.make : null},
+    {item.vehicle.model ? item.vehicle.model : null} , 
+    {item.vehicle.price ? item.vehicle.price : null} 
+    </li>
     )
   })
+
+
+  // const calculateTotal = Object.values(currentCart.cart_vehicles.vehicle)
 
 
   function goToPaymentForm(){
     navigate("/payment-form")
   }
 
+  
 
   return (
     <div>
@@ -44,7 +48,8 @@ function ShoppingCart({currentCart, setCurrentCart}) {
         {displayItemsInCart}
       </ul>
 
-      <button onClick={() => goToPaymentForm}>Pay Now</button>
+      <span>Total: {currentCart.total_amount}</span>
+      <button onClick={() => goToPaymentForm()}>Pay Now</button>
     </div>
   )
 }
