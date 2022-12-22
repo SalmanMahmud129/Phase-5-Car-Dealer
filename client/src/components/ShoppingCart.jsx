@@ -12,11 +12,9 @@ const stripePromise = loadStripe(PUBLIC_KEY)
 
 function ShoppingCart({currentCart, setCurrentCart}) {
 
-  useEffect(() =>{
-    fetch("/current-cart")
-    .then(resp => resp.json())
-    .then(cartData => setCurrentCart(cartData))
-  }, [])
+  // useEffect(() =>{
+  //   fetch()
+  // })
 
   const navigate = useNavigate()
 
@@ -25,7 +23,7 @@ function ShoppingCart({currentCart, setCurrentCart}) {
   const [clientSecret, setClientSecret] = useState("")
 
 
-  const displayItemsInCart = currentCart.map(item =>{
+  const displayItemsInCart = currentCart.cart_vehicles?.map(item =>{
     return (
     <li>{item.make},{item.model} , {item.price} </li>
     )

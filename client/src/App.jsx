@@ -33,19 +33,17 @@ function App() {
     .then(cars => setCarData(cars))
   },[])
 
+   // allows for maintaining all the vehicles in the cart on all pages
+  useEffect(() =>{
+    fetch("/current-cart")
+    .then(resp => resp.json())
+    .then(cartData => {
+      setCurrentCart(cartData)})
+  }, [])
+
   console.log(carData)
 
-  // useEffect(() =>{
-  //   fetch('/cart_vehicles')
-  //   .then(resp => resp.json())
-  //   .then(cart_vehicles => setInCart(cart_vehicles))
-  // }, [])
-
-  
-  
-
-
-  console.log("user's cart", currentCart)
+  console.log("App's cart data", currentCart)
 
   return (
     <div className="App">
@@ -53,7 +51,7 @@ function App() {
       <Navbar />
       <Routes>
 
-        <Route path="/" element={<Home carData={carData} setCurrentCart={setCurrentCart}/>}/>
+        <Route path="/" element={<Home carData={carData} currentCart={currentCart}/>}/>
 
         <Route path="/login" element={<Login />}/>
 

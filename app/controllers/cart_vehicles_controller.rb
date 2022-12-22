@@ -9,9 +9,11 @@ class CartVehiclesController < ApplicationController
         render json: cart_vehicle, status: :created
     end
 
-    # def destroy 
-
-    # end
+    def destroy
+        cart_vehicle = CartVehicle.find_by(shopping_cart_id: session[:shopping_cart_id], vehicle_id: params[:id])
+        cart_vehicle.destroy
+        head :no_content
+    end
 
 
     private 

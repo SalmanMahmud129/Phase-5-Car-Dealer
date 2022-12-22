@@ -4,19 +4,11 @@ import StripeCheckout from 'react-stripe-checkout'
 import { useParams } from 'react-router-dom'
 
 function CarDetail({currentCart, setCurrentCart}) {
-  
-  // maintaining all the vehicles in the cart on this page
-  useEffect(() =>{
-    fetch("/current-cart")
-    .then(resp => resp.json())
-    .then(cartData => {
-      console.log("cart data", cartData)
-      setCurrentCart(cartData)})
-  }, [])
 
-    console.log("current cart", currentCart)
+    // console.log("Car Detail's cart data", currentCart)
     // console.log(clickedCar)
     const [carDetails, setCarDetails] = useState({})
+    
 
     const {id} = useParams()
 
@@ -24,12 +16,12 @@ function CarDetail({currentCart, setCurrentCart}) {
       fetch(`/vehicles/${id}`)
       .then(resp => resp.json())
       .then(carDetail => setCarDetails(carDetail) )
-    },[])
+    },[currentCart])
     console.log("car detail state in CarDetail.js", carDetails)
 
     
   function addToCart(){
-    fetch("/add-to-cart", {
+    fetch(`/add-to-cart/${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -38,27 +30,30 @@ function CarDetail({currentCart, setCurrentCart}) {
 
     })
     .then(resp => resp.json())
-    .then(addedCar => setCurrentCart({...currentCart, cart_vehicle: [...currentCart.cart_vehicles, addedCar]}))
+    .then(addedCar => setCurrentCart({...currentCart, cart_vehicles: [...currentCart.cart_vehicles, addedCar]}))
   }
 
-  function removeFromCart(removedItem){ 
-    const updatedCart = currentCart.filter(item => item.id !== removedItem.id )
-    // setCurrentCart(updatedCart)
+  function removeFromCart(){
+    fetch(`/remove-from-cart/${id}`, {
+      method: "DELETE"
+    })
+    .then(() =>{
+    setCurrentCart({...currentCart, cart_vehicles: [currentCart.cart_vehicles.filter(item => item.vehicle_id !== id)]})}
+    )
+
+    
   }
 
-  console.log("Filter--------", currentCart.cart_vehicles?.filter(vehicle => {
-    console.log("Vehicle in filter -------------> ", vehicle)
-    return vehicle.vehicle_id === carDetails.id}))
-    // const addOrRemove = currentCart.cart_vehicles?.includes(carDetails)  ?
-  const addOrRemove = currentCart.cart_vehicles?.filter(vehicle => vehicle.vehicle_id === carDetails.id).length > 0 ?
+ 
+  const cartButton = currentCart.cart_vehicles?.filter(vehicle => vehicle.vehicle_id === carDetails.id).length > 0 ?
   <button onClick={() => removeFromCart(carDetails)}>Remove From Cart</button> : 
   <button onClick={() => addToCart(carDetails)}>Add to Cart</button>
  
 
-//     const displayReviews = clickedCar.reviews.map(review =>{ 
-//         console.log("review", review.id)
-//         return <span key={review.id}>{review.star_rating} {review.content}</span>  
-// })
+    const displayReviews = carDetails.reviews?.map(review =>{ 
+        console.log("review", review.id)
+        return <span key={review.id}>Star Rating: {review.star_rating} Comment: {review.content}</span>  
+})
 
 
   return (
@@ -66,8 +61,11 @@ function CarDetail({currentCart, setCurrentCart}) {
     {carDetails.make}
     {carDetails.model}
     {carDetails.year}
+    <div>
+    {displayReviews}
+    </div>
     {/* {clickedCar.reviews ? displayReviews : null} */}
-    {addOrRemove}
+    {cartButton}
     {/* <button onClick={handleClick}> {renderButtonText} </button> */}
     {/* <div>CarDetail: BUY NOW -------<StripeCheckout token={onToken} stripeKey={process.env.REACT_APP_STRIPE_KEY} /></div> */}
     </>

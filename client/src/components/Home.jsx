@@ -1,19 +1,16 @@
 import React, { useEffect } from 'react'
 import CarContainer from './CarContainer'
+import CheckBoxFilter from './CheckBoxFilter'
 
 function Home({carData, setCurrentCart }) {
 
-  useEffect(() =>{
-    fetch("/current-cart")
-    .then(resp => resp.json())
-    .then(cartData => setCurrentCart(cartData))
-  }, [])
+  
 
   
 
   return (
     <>
-    <div>Home</div>
+    <div><CheckBoxFilter/></div>
     <CarContainer carData={carData}/>
     </>
   )

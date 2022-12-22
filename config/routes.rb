@@ -15,9 +15,9 @@ Rails.application.routes.draw do
 
 
   
-  post "/add-to-cart", to: "cart_vehicles#create"
+  post "/add-to-cart/:id", to: "cart_vehicles#create"
 
-  delete "/remove-from-cart", to: "cart_vehicles#destroy"
+  delete "/remove-from-cart/:id", to: "cart_vehicles#destroy"
 
 
 
