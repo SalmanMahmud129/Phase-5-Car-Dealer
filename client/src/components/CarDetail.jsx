@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import StripeCheckout from 'react-stripe-checkout'
 import { useParams } from 'react-router-dom'
 
-function CarDetail({currentCart, setCurrentCart}) {
+function CarDetail({currentCart, setCurrentCart,setIsInCart}) {
 
     // console.log("Car Detail's cart data", currentCart)
     // console.log(clickedCar)
@@ -30,7 +30,10 @@ function CarDetail({currentCart, setCurrentCart}) {
 
     })
     .then(resp => resp.json())
-    .then(addedCar => setCurrentCart({...currentCart, cart_vehicles: [...currentCart.cart_vehicles, addedCar]}))
+    .then(addedCar => {
+      setIsInCart(true)
+      setCurrentCart({...currentCart, cart_vehicles: [...currentCart.cart_vehicles, addedCar]})}
+      )
   }
 
   function removeFromCart(){
@@ -38,7 +41,9 @@ function CarDetail({currentCart, setCurrentCart}) {
       method: "DELETE"
     })
     .then(() =>{
-    setCurrentCart({...currentCart, cart_vehicles: [currentCart.cart_vehicles.filter(item => item.vehicle_id !== id)]})}
+    setIsInCart(false)
+    setCurrentCart({...currentCart, cart_vehicles: [currentCart.cart_vehicles.filter(item => item.vehicle_id !== id)]})
+  }
     )
 
     
@@ -63,6 +68,9 @@ console.log("cart total: ",currentCart.total_amount)
     {carDetails.year}
     <div>
     {displayReviews}
+    </div>
+    <div>
+      <span>${carDetails.price}</span>
     </div>
     {/* {clickedCar.reviews ? displayReviews : null} */}
     {cartButton}

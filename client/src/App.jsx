@@ -26,6 +26,7 @@ function App() {
   const [carData, setCarData] = useState([])
   // const [clickedCar, setClickedCar] = useState(null)
   const [currentCart, setCurrentCart] = useState([])
+  const [isInCart, setIsInCart] = useState(false)
 
   useEffect(() =>{
     fetch('/vehicles')
@@ -38,12 +39,15 @@ function App() {
     fetch("/current-cart")
     .then(resp => resp.json())
     .then(cartData => {
+      console.log("Current Cart Fetches in app")
       setCurrentCart(cartData)})
-  }, [])
+  }, [isInCart])
 
   console.log(carData)
 
   console.log("App's cart data", currentCart)
+
+  
 
   return (
     <div className="App">
@@ -61,11 +65,11 @@ function App() {
 
         <Route path="/logged-out" element={<LogoutScreen />}/>
 
-        <Route path="car-detail/:id" element={<CarDetail currentCart={currentCart} setCurrentCart={setCurrentCart}/>}/>
+        <Route path="car-detail/:id" element={<CarDetail setIsInCart={setIsInCart} currentCart={currentCart} setCurrentCart={setCurrentCart}/>}/>
 
         <Route path="/testing" element={<h1>Test Route</h1>}/>
 
-        <Route path="/cart" element={<ShoppingCart currentCart={currentCart} setCurrentCart={setCurrentCart}/>} />
+        <Route path="/cart" element={<ShoppingCart setIsInCart={setIsInCart} currentCart={currentCart} setCurrentCart={setCurrentCart}/>} />
 
         <Route path="/payment-form" element={<PaymentForm />} />
 

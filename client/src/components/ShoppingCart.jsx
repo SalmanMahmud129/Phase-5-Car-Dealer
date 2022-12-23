@@ -17,6 +17,7 @@ function ShoppingCart({currentCart, setCurrentCart}) {
   console.log("shopping cart page", currentCart)
 
   const [clientSecret, setClientSecret] = useState("")
+  
 
 
   const displayItemsInCart = currentCart.cart_vehicles?.map((item) =>{
