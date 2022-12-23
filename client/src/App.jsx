@@ -22,11 +22,13 @@ import PaymentCompletePage from './components/PaymentCompletePage';
 
 
 function App() {
+  const currentUser = localStorage.getItem("user_id")
 
   const [carData, setCarData] = useState([])
   // const [clickedCar, setClickedCar] = useState(null)
   const [currentCart, setCurrentCart] = useState([])
   const [isInCart, setIsInCart] = useState(false)
+  const [userData, setUserData] = useState([])
 
   useEffect(() =>{
     fetch('/vehicles')
@@ -43,6 +45,16 @@ function App() {
       setCurrentCart(cartData)})
   }, [isInCart])
 
+  useEffect(() =>{
+    fetch(`/users/${currentUser}`)
+    .then(resp => resp.json())
+    .then(user =>{
+      setUserData(user)
+    } )
+  }, [])
+
+  console.log(userData)
+
   console.log(carData)
 
   console.log("App's cart data", currentCart)
@@ -55,7 +67,7 @@ function App() {
       <Navbar />
       <Routes>
 
-        <Route path="/" element={<Home carData={carData} currentCart={currentCart}/>}/>
+        <Route path="/" element={<Home userData={userData} carData={carData} currentCart={currentCart}/>}/>
 
         <Route path="/login" element={<Login />}/>
 
@@ -69,7 +81,7 @@ function App() {
 
         <Route path="/testing" element={<h1>Test Route</h1>}/>
 
-        <Route path="/cart" element={<ShoppingCart setIsInCart={setIsInCart} currentCart={currentCart} setCurrentCart={setCurrentCart}/>} />
+        <Route path="/cart" element={<ShoppingCart isInCart={isInCart} setIsInCart={setIsInCart} currentCart={currentCart} setCurrentCart={setCurrentCart}/>} />
 
         <Route path="/payment-form" element={<PaymentForm />} />
 
