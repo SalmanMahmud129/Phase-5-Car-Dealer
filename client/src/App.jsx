@@ -13,6 +13,7 @@ import ShoppingCart from './components/ShoppingCart';
 import PaymentForm from './components/PaymentForm';
 import { useParams } from 'react-router-dom';
 import PaymentCompletePage from './components/PaymentCompletePage';
+import 'semantic-ui-css/semantic.min.css'
 // import { loadStripe } from '@stripe/stripe-js'
 // import { Elements } from "@stripe/react-stripe-js";
 

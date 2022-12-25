@@ -17,6 +17,8 @@
     "react-router-dom": "^6.4.5",
     "react-scripts": "5.0.1",
     "react-stripe-checkout": "^2.6.3",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

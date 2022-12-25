@@ -5,9 +5,9 @@ Stripe.api_key = ENV['STRIPE_SECRET_KEY']
 
 class ChargeController < ApplicationController
     def create
-        binding.pry
+        # binding.pry
         payment_intent = Stripe::PaymentIntent.create(
-            amount: calculate_amount(params[:ids])
+            amount: params[:amount]
             currency: 'usd',
             automatic_payment_methods: {
                 enabled: true
