@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import CarContainer from './CarContainer'
-import CheckBoxFilter from './CheckBoxFilter'
+import CheckBox from './CheckBox'
 import SearchBar from './SearchBar'
 
 function Home({userData, carData, setCurrentCart }) {
+  const currentUser = localStorage.getItem("user_id")
   const [makeFilter, setMakeFilter] = useState("")
   const [modelFilter, setModelFilter] = useState("")
   const [priceFilter, setPriceFilter] = useState("")
@@ -12,18 +13,38 @@ function Home({userData, carData, setCurrentCart }) {
   const [search, setSearch] = useState("")
 
 
+  const searchedCars = carData.filter((car) => {
+    return(
+    car.make.replace(/ /g, '').toLowerCase().includes(search.toLowerCase()) || car.model.replace(/ /g, '').toLowerCase().includes(search.toLowerCase())
+  )}
+  )
+
+
+
+
   
 
   
+
+  //---------------checkbox filter styling ----------\\
+
+  const checkBoxFilterStyle = {
+    position: "absolute",
+    left: "80px"
+  }
+
+  //---------------checkbox filter styling ----------\\
 
   return (
     <>
-    <h1>Welcome, {userData.username}!</h1>
-    <div><CheckBoxFilter/></div>
+    {currentUser ? <h1>Welcome, {userData.username}!</h1> : null }
+    <div style={checkBoxFilterStyle}><CheckBox carData={carData}/></div>
     <SearchBar search={search} setSearch={setSearch}/>
-    <CarContainer carData={carData}/>
+    <CarContainer carData={searchedCars}/>
     </>
   )
+
+  
 }
 
 export default Home

@@ -58,13 +58,13 @@ user.save
 puts "seeding vehicles"
 
 
-Vehicle.create!(make: "Chevy", model: "Camaro", year:"2014", price: rand(20000..80000))
-Vehicle.create!(make: "Ford", model: "Focus", year:"2010", price: rand(20000..80000))
-Vehicle.create!(make: "Hyundai", model: "Palisade", year:"2023", price: rand(20000..80000))
-Vehicle.create!(make: "Jeep", model: "Wrangler", year:"2017", price: rand(20000..80000))
-Vehicle.create!(make: "Nissan", model: "Altima", year:"2015", price: rand(20000..80000))
-Vehicle.create!(make: "Toyota", model: "Rav4", year:"2016", price: rand(20000..80000))
-Vehicle.create!(make: "Honda", model: "Civic", year:"2014", price: rand(20000..80000))
+Vehicle.create!(make: "Chevy", model: "Camaro", year:"2014", price: rand(20000..80000), color: Faker::Color.color_name, transmission: "Automatic")
+Vehicle.create!(make: "Ford", model: "Focus", year:"2010", price: rand(20000..80000), color: Faker::Color.color_name, transmission: "Automatic")
+Vehicle.create!(make: "Hyundai", model: "Palisade", year:"2023", price: rand(20000..80000), color: Faker::Color.color_name, transmission: "Automatic")
+Vehicle.create!(make: "Jeep", model: "Wrangler", year:"2017", price: rand(20000..80000), color: Faker::Color.color_name, transmission: "Automatic")
+Vehicle.create!(make: "Nissan", model: "Altima", year:"2015", price: rand(20000..80000), color: Faker::Color.color_name, transmission: "Automatic")
+Vehicle.create!(make: "Toyota", model: "Rav4", year:"2016", price: rand(20000..80000), color: Faker::Color.color_name, transmission: "Automatic")
+Vehicle.create!(make: "Honda", model: "Civic", year:"2014", price: rand(20000..80000), color: Faker::Color.color_name, transmission: "Automatic")
 
 
 puts "seeding reviews"

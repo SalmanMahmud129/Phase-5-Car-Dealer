@@ -63,9 +63,11 @@ function CarDetail({currentCart, setCurrentCart,setIsInCart}) {
 console.log("cart total: ",currentCart.total_amount)
   return (
     <>
-    {carDetails.make}
-    {carDetails.model}
-    {carDetails.year}
+    <div>{carDetails.make}</div>
+    <div>{carDetails.model}</div>
+    <div>{carDetails.year}</div>
+    <div>{carDetails.color} </div>
+    <div>{carDetails.transmission}</div>
     <div>
     {displayReviews}
     </div>

@@ -44,7 +44,7 @@ function App() {
     .then(cartData => {
       console.log("Current Cart Fetches in app")
       setCurrentCart(cartData)})
-  }, [isInCart])
+  }, [isInCart,currentUser])
 
   useEffect(() =>{
     fetch(`/users/${currentUser}`)
@@ -52,7 +52,7 @@ function App() {
     .then(user =>{
       setUserData(user)
     } )
-  }, [])
+  }, [currentUser])
 
   console.log(userData)
 

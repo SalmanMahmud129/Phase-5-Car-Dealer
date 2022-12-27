@@ -1,5 +1,5 @@
 class VehicleSerializer < ActiveModel::Serializer
-  attributes :id, :make, :model, :year, :price
+  attributes :id, :make, :model, :year, :price, :color, :transmission
   has_many :reviews
   
 end
