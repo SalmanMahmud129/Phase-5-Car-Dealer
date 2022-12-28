@@ -15,7 +15,7 @@ function Home({userData, carData, setCurrentCart }) {
 
   const searchedCars = carData.filter((car) => {
     return(
-    car.make.replace(/ /g, '').toLowerCase().includes(search.toLowerCase()) || car.model.replace(/ /g, '').toLowerCase().includes(search.toLowerCase())
+    car.make.toLowerCase().includes(search.toLowerCase()) || car.model.toLowerCase().includes(search.toLowerCase())
   )}
   )
 

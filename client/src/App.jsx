@@ -14,6 +14,7 @@ import PaymentForm from './components/PaymentForm';
 import { useParams } from 'react-router-dom';
 import PaymentCompletePage from './components/PaymentCompletePage';
 import 'semantic-ui-css/semantic.min.css'
+import AddVehicle from './components/AddVehicle';
 // import { loadStripe } from '@stripe/stripe-js'
 // import { Elements } from "@stripe/react-stripe-js";
 
@@ -24,12 +25,14 @@ import 'semantic-ui-css/semantic.min.css'
 
 function App() {
   const currentUser = localStorage.getItem("user_id")
+  const isAdmin = localStorage.getItem("isAdmin")
 
   const [carData, setCarData] = useState([])
   // const [clickedCar, setClickedCar] = useState(null)
   const [currentCart, setCurrentCart] = useState([])
   const [isInCart, setIsInCart] = useState(false)
   const [userData, setUserData] = useState([])
+  const [toggleLogin, setToggleLogin] = useState(null)
 
   useEffect(() =>{
     fetch('/vehicles')
@@ -52,7 +55,7 @@ function App() {
     .then(user =>{
       setUserData(user)
     } )
-  }, [currentUser])
+  }, [currentUser,isAdmin, toggleLogin])
 
   console.log(userData)
 
@@ -65,12 +68,12 @@ function App() {
   return (
     <div className="App">
 
-      <Navbar />
+      <Navbar setToggleLogin={setToggleLogin}/>
       <Routes>
 
         <Route path="/" element={<Home userData={userData} carData={carData} currentCart={currentCart}/>}/>
 
-        <Route path="/login" element={<Login />}/>
+        <Route path="/login" element={<Login setToggleLogin={setToggleLogin} />}/>
 
         <Route path="/signup" element={<Signup />}/>
         
@@ -87,6 +90,8 @@ function App() {
         <Route path="/payment-form" element={<PaymentForm />} />
 
         <Route path="/payment-complete" element={<PaymentCompletePage />} />
+
+        <Route path='add-vehicle' element={<AddVehicle/>} />
           
       </Routes>
       

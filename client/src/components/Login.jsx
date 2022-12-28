@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useNavigate, NavLink } from 'react-router-dom'
 
-function Login() {
+function Login({setToggleLogin}) {
 
     const navigate = useNavigate()
 
@@ -32,6 +32,7 @@ function Login() {
                 resp.json().then(user => {
                     localStorage.setItem("user_id", user.id)
                     localStorage.setItem("isAdmin", user.admin)
+                    setToggleLogin(true)
                     setErrors([])
                     navigate("/")
                 })

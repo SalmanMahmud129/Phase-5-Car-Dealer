@@ -58,14 +58,8 @@ function ShoppingCart({isInCart, setIsInCart, currentCart, setCurrentCart}) {
     .then(resp => resp.json())
     .then((data) => {
       setClientSecret(data.clientSecret)
-      goToPaymentForm()
+      // goToPaymentForm()
     })
-  }
-
-
-
-  function goToPaymentForm(){
-    navigate("/payment-form")
   }
 
   const appearance = {
@@ -87,6 +81,8 @@ function ShoppingCart({isInCart, setIsInCart, currentCart, setCurrentCart}) {
       </ul>
 
       <span>Total: {currentCart.total_amount}</span>
+      <button onClick={handleClick}>Pay Now</button>
+
       <div>
         {clientSecret && (
           <Elements options={options} stripe={stripePromise}>
@@ -94,7 +90,7 @@ function ShoppingCart({isInCart, setIsInCart, currentCart, setCurrentCart}) {
           </Elements>
         )}
       </div>
-      <button onClick={() => handleClick}>Pay Now</button>
+      
     </div>
   )
 }

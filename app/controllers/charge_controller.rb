@@ -7,7 +7,7 @@ class ChargeController < ApplicationController
     def create
         # binding.pry
         payment_intent = Stripe::PaymentIntent.create(
-            amount: params[:amount]
+            amount: params[:amount] * 100,
             currency: 'usd',
             automatic_payment_methods: {
                 enabled: true
