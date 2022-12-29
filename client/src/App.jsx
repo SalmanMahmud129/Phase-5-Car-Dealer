@@ -33,12 +33,13 @@ function App() {
   const [isInCart, setIsInCart] = useState(false)
   const [userData, setUserData] = useState([])
   const [toggleLogin, setToggleLogin] = useState(null)
+  const [renderVehicles, setRenderVehicles] = useState(false)
 
   useEffect(() =>{
     fetch('/vehicles')
     .then(resp => resp.json())
     .then(cars => setCarData(cars))
-  },[])
+  },[renderVehicles])
 
    // allows for maintaining all the vehicles in the cart on all pages
   useEffect(() =>{
@@ -91,7 +92,7 @@ function App() {
 
         <Route path="/payment-complete" element={<PaymentCompletePage />} />
 
-        <Route path='add-vehicle' element={<AddVehicle/>} />
+        <Route path='add-vehicle' element={<AddVehicle renderVehicles={renderVehicles} setRenderVehicles={setRenderVehicles}/>} />
           
       </Routes>
       

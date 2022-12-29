@@ -4,8 +4,9 @@ import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CurrencyInput from 'react-currency-input-field'
+import { Radio } from 'antd';
 
-function AddVehicle() {
+function AddVehicle({renderVehicles, setRenderVehicles}) {
 
     const navigate = useNavigate()
 
@@ -16,7 +17,8 @@ function AddVehicle() {
     })
 
     const [year, setYear] = useState( new Date())
-    const [transmission, setTransmisson] = useState(null)
+    const [transmission, setTransmission] = useState("Automatic")
+    console.log(transmission)
     const [price, setPrice] = useState(null)
 
 
@@ -34,8 +36,11 @@ function AddVehicle() {
         const newVehicle = {
             ...formData,
             year: year,
-            transmission: transmission
+            transmission: transmission,
+            price: price
         }
+
+        console.log('newVehicle', newVehicle)
 
         fetch('/vehicles', {
             method: "POST",
@@ -46,7 +51,9 @@ function AddVehicle() {
         })
         .then(resp => {
             if(resp.ok){
-                resp.json().then(navigate('/'))
+                resp.json().then(() => {
+                    setRenderVehicles(!renderVehicles)
+                    navigate('/')})
             } else{
                 resp.json().then(data => {
                     console.log(data.errors)
@@ -72,7 +79,7 @@ function AddVehicle() {
             <label>
                 Enter Model
             </label>
-            <input className="login-form-inputs" type='password' name='model' value={formData.model} onChange={handleChange} />
+            <input className="login-form-inputs" type='text' name='model' value={formData.model} onChange={handleChange} />
 
             <label>
                 Enter Year
@@ -85,10 +92,35 @@ function AddVehicle() {
                 Enter Price
             </label>
             <CurrencyInput className="login-form-inputs" id='input-example' name='input-name' placeholder='$' prefix="$" defaultValue={0} decimalsLimit={2} onValueChange={(value) => setPrice(value)} />
+
+            <label>
+                Enter Color
+            </label>
+            <input className='login-form-inputs' type='text' name='color' value={formData.color} onChange={handleChange}></input>
+
+            <label>
+                Enter Transmission
+            </label>
+            <br></br>
             
+            
+            <Radio.Group defaultValue="a" buttonStyle="solid" onChange={(e) => {
+                if(e.target.value === "a"){
+                setTransmission("Automatic")} else{
+                setTransmission("Manual")
+                }
+                }}>
+                <Radio.Button value="a">Automatic</Radio.Button>
+                <Radio.Button value="b">Manual</Radio.Button>
+            </Radio.Group>
 
+            <br></br>
+            <br></br>
+            <br></br>
+            
+            <div>
             <input className="login-buttons" type='submit' value='Add Vehicle' />
-
+            </div>
             {errors ? errors.map(error => <div key={error}className='login-error'>{error}</div>) : null}
 
         </form>

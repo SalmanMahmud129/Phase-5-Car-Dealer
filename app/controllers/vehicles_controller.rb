@@ -33,6 +33,6 @@ class VehiclesController < ApplicationController
     end
 
     def vehicle_params
-        params.permit(:make, :model, :year)
+        params.permit(:make, :model, :year, :transmission, :price, :color)
     end
 end
