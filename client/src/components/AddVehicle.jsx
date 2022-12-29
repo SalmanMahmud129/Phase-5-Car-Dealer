@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CurrencyInput from 'react-currency-input-field'
 
 function AddVehicle() {
 
@@ -11,12 +12,12 @@ function AddVehicle() {
     const [formData, setFormData] = useState({
         make: '',
         model: '',
-        price: '',
         color: '',
     })
 
     const [year, setYear] = useState( new Date())
     const [transmission, setTransmisson] = useState(null)
+    const [price, setPrice] = useState(null)
 
 
 
@@ -61,11 +62,6 @@ function AddVehicle() {
     <br></br>
     <br></br>
     <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
     <div className='login-container'>
         <form className='login-form-container' onSubmit={handleSubmit}>
             <label>
@@ -82,8 +78,13 @@ function AddVehicle() {
                 Enter Year
             </label>
             <div>
-            <DatePicker selected={year} onChange={(date) => setYear(date)} showYearPicker dateFormat="yyyy" />
+            <DatePicker className="login-form-inputs" selected={year} onChange={(date) => setYear(date)} showYearPicker dateFormat="yyyy" />
             </div>
+
+            <label>
+                Enter Price
+            </label>
+            <CurrencyInput className="login-form-inputs" id='input-example' name='input-name' placeholder='$' prefix="$" defaultValue={0} decimalsLimit={2} onValueChange={(value) => setPrice(value)} />
             
 
             <input className="login-buttons" type='submit' value='Add Vehicle' />
