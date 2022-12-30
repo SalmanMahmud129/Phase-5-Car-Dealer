@@ -2,12 +2,15 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import StripeCheckout from 'react-stripe-checkout'
 import { useParams } from 'react-router-dom'
+import EditVehicle from './EditVehicle'
 
 function CarDetail({currentCart, setCurrentCart,setIsInCart}) {
 
     // console.log("Car Detail's cart data", currentCart)
     // console.log(clickedCar)
     const [carDetails, setCarDetails] = useState({})
+    const isAdmin = localStorage.getItem("isAdmin")
+    const [renderEditForm, setRenderEditForm] = useState(false)
     
 
     const {id} = useParams()
@@ -16,7 +19,7 @@ function CarDetail({currentCart, setCurrentCart,setIsInCart}) {
       fetch(`/vehicles/${id}`)
       .then(resp => resp.json())
       .then(carDetail => setCarDetails(carDetail) )
-    },[currentCart])
+    },[currentCart, renderEditForm])
     console.log("car detail state in CarDetail.js", carDetails)
 
     
@@ -49,10 +52,16 @@ function CarDetail({currentCart, setCurrentCart,setIsInCart}) {
     
   }
 
+  function editForm(){
+    setRenderEditForm(!renderEditForm)
+  }
+
  
   const cartButton = currentCart.cart_vehicles?.filter(vehicle => vehicle.vehicle_id === carDetails.id).length > 0 ?
   <button onClick={() => removeFromCart(carDetails)}>Remove From Cart</button> : 
   <button onClick={() => addToCart(carDetails)}>Add to Cart</button>
+
+  const editButton = isAdmin ? <button onClick={() => editForm()}>Edit</button> : null
  
 
     const displayReviews = carDetails.reviews?.map(review =>{ 
@@ -76,6 +85,8 @@ console.log("cart total: ",currentCart.total_amount)
     </div>
     {/* {clickedCar.reviews ? displayReviews : null} */}
     {cartButton}
+    {editButton}
+    {renderEditForm ? <EditVehicle carDetails={carDetails} id={id} setRenderEditForm={setRenderEditForm} renderEditForm={renderEditForm}/> : null}
     {/* <button onClick={handleClick}> {renderButtonText} </button> */}
     {/* <div>CarDetail: BUY NOW -------<StripeCheckout token={onToken} stripeKey={process.env.REACT_APP_STRIPE_KEY} /></div> */}
     </>

@@ -3,7 +3,7 @@ import CarContainer from './CarContainer'
 import CheckBox from './CheckBox'
 import SearchBar from './SearchBar'
 
-function Home({userData, carData, setCurrentCart }) {
+function Home({userData, carData, setCurrentCart, setRenderVehicles, renderVehicles }) {
   const currentUser = localStorage.getItem("user_id")
   const [makeFilter, setMakeFilter] = useState("")
   const [modelFilter, setModelFilter] = useState("")
@@ -20,7 +20,7 @@ function Home({userData, carData, setCurrentCart }) {
   )
 
 
-
+console.log('userData', userData)
 
   
 
@@ -40,7 +40,7 @@ function Home({userData, carData, setCurrentCart }) {
     {currentUser ? <h1>Welcome, {userData.username}!</h1> : null }
     <div style={checkBoxFilterStyle}><CheckBox carData={carData}/></div>
     <SearchBar search={search} setSearch={setSearch}/>
-    <CarContainer carData={searchedCars}/>
+    <CarContainer carData={searchedCars} setRenderVehicles={setRenderVehicles} renderVehicles={renderVehicles}/>
     </>
   )
 

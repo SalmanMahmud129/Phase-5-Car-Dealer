@@ -72,7 +72,7 @@ function App() {
       <Navbar setToggleLogin={setToggleLogin}/>
       <Routes>
 
-        <Route path="/" element={<Home userData={userData} carData={carData} currentCart={currentCart}/>}/>
+        <Route path="/" element={<Home userData={userData} carData={carData} currentCart={currentCart} setRenderVehicles={setRenderVehicles} renderVehicles={renderVehicles}/>}/>
 
         <Route path="/login" element={<Login setToggleLogin={setToggleLogin} />}/>
 
