@@ -34,12 +34,13 @@ function App() {
   const [userData, setUserData] = useState([])
   const [toggleLogin, setToggleLogin] = useState(null)
   const [renderVehicles, setRenderVehicles] = useState(false)
+  const [renderEditForm, setRenderEditForm] = useState(false)
 
   useEffect(() =>{
     fetch('/vehicles')
     .then(resp => resp.json())
     .then(cars => setCarData(cars))
-  },[renderVehicles])
+  },[renderVehicles, renderEditForm])
 
    // allows for maintaining all the vehicles in the cart on all pages
   useEffect(() =>{
@@ -72,7 +73,7 @@ function App() {
       <Navbar setToggleLogin={setToggleLogin}/>
       <Routes>
 
-        <Route path="/" element={<Home userData={userData} carData={carData} currentCart={currentCart} setRenderVehicles={setRenderVehicles} renderVehicles={renderVehicles}/>}/>
+        <Route path="/" element={<Home userData={userData} carData={carData} currentCart={currentCart} renderVehicles={renderVehicles} setRenderVehicles={setRenderVehicles}  />}/>
 
         <Route path="/login" element={<Login setToggleLogin={setToggleLogin} />}/>
 
@@ -82,7 +83,7 @@ function App() {
 
         <Route path="/logged-out" element={<LogoutScreen />}/>
 
-        <Route path="car-detail/:id" element={<CarDetail setIsInCart={setIsInCart} currentCart={currentCart} setCurrentCart={setCurrentCart}/>}/>
+        <Route path="car-detail/:id" element={<CarDetail setIsInCart={setIsInCart} currentCart={currentCart} setCurrentCart={setCurrentCart} renderEditForm={renderEditForm} setRenderEditForm={setRenderEditForm}/>}/>
 
         <Route path="/testing" element={<h1>Test Route</h1>}/>
 

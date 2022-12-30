@@ -4,13 +4,13 @@ import StripeCheckout from 'react-stripe-checkout'
 import { useParams } from 'react-router-dom'
 import EditVehicle from './EditVehicle'
 
-function CarDetail({currentCart, setCurrentCart,setIsInCart}) {
+function CarDetail({currentCart, setCurrentCart,setIsInCart, renderEditForm, setRenderEditForm}) {
 
     // console.log("Car Detail's cart data", currentCart)
     // console.log(clickedCar)
     const [carDetails, setCarDetails] = useState({})
     const isAdmin = localStorage.getItem("isAdmin")
-    const [renderEditForm, setRenderEditForm] = useState(false)
+    
     
 
     const {id} = useParams()
