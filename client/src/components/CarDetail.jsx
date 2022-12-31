@@ -3,13 +3,17 @@ import { useEffect } from 'react'
 import StripeCheckout from 'react-stripe-checkout'
 import { useParams } from 'react-router-dom'
 import EditVehicle from './EditVehicle'
+import ReviewContainer from './ReviewContainer'
+import { Button } from 'antd';
+import ReviewForm from './ReviewForm'
 
-function CarDetail({currentCart, setCurrentCart,setIsInCart, renderEditForm, setRenderEditForm}) {
+function CarDetail({currentCart, setCurrentCart,setIsInCart, renderEditForm, setRenderEditForm, reviewForm, setReviewForm}) {
 
     // console.log("Car Detail's cart data", currentCart)
     // console.log(clickedCar)
     const [carDetails, setCarDetails] = useState({})
     const isAdmin = localStorage.getItem("isAdmin")
+    const currentUser = localStorage.getItem("user_id")
     
     
 
@@ -56,20 +60,23 @@ function CarDetail({currentCart, setCurrentCart,setIsInCart, renderEditForm, set
     setRenderEditForm(!renderEditForm)
   }
 
+  function renderReviewForm(){
+    console.log("reviewForm")
+    setReviewForm(!reviewForm)
+  }
+
  
   const cartButton = currentCart.cart_vehicles?.filter(vehicle => vehicle.vehicle_id === carDetails.id).length > 0 ?
   <button onClick={() => removeFromCart(carDetails)}>Remove From Cart</button> : 
   <button onClick={() => addToCart(carDetails)}>Add to Cart</button>
 
-  const editButton = isAdmin ? <button onClick={() => editForm()}>Edit</button> : null
+  const editButton = isAdmin ? <Button type='primary' onClick={() => editForm()}>Edit</Button> : null
  
 
-    const displayReviews = carDetails.reviews?.map(review =>{ 
-        console.log("review", review.id)
-        return <span key={review.id}>Star Rating: {review.star_rating} Comment: {review.content}</span>  
-})
+
 
 console.log("cart total: ",currentCart.total_amount)
+console.log('reviewForm state in Car Detail: ', reviewForm)
   return (
     <>
     <div>{carDetails.make}</div>
@@ -78,15 +85,24 @@ console.log("cart total: ",currentCart.total_amount)
     <div>{carDetails.color} </div>
     <div>{carDetails.transmission}</div>
     <div>
-    {displayReviews}
-    </div>
-    <div>
       <span>${carDetails.price}</span>
     </div>
+    
+    
     {/* {clickedCar.reviews ? displayReviews : null} */}
     {cartButton}
     {editButton}
     {renderEditForm ? <EditVehicle carDetails={carDetails} id={id} setRenderEditForm={setRenderEditForm} renderEditForm={renderEditForm}/> : null}
+    
+    {/* {displayReviews} */}
+    <br></br>
+    <br></br>
+    <div>
+      <p style={{marginRight: '150px'}} >Reviews:</p>
+      <ReviewContainer carDetails={carDetails}/>
+      {currentUser ? <Button style={{marginLeft: '150px'}} type='primary' onClick={() => renderReviewForm()}>Leave a Review</Button>: null}
+      {reviewForm ? <ReviewForm /> : null}
+    </div>
     {/* <button onClick={handleClick}> {renderButtonText} </button> */}
     {/* <div>CarDetail: BUY NOW -------<StripeCheckout token={onToken} stripeKey={process.env.REACT_APP_STRIPE_KEY} /></div> */}
     </>
@@ -96,21 +112,4 @@ console.log("cart total: ",currentCart.total_amount)
 export default CarDetail
 
 
- // const onToken = (token) => {
-
-    //     const charge = {
-    //         token: token.id
-    //     };
-    
-    //     const config = {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({ charge: charge, price: price * 100 })
-    //     };
-    
-    //     fetch(CHARGES_URL, config)
-    //     .then(res => res.json())
-    //     .then(console.log)
-    // }
+ 

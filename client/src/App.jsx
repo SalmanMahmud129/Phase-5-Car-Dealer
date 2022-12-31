@@ -35,6 +35,7 @@ function App() {
   const [toggleLogin, setToggleLogin] = useState(null)
   const [renderVehicles, setRenderVehicles] = useState(false)
   const [renderEditForm, setRenderEditForm] = useState(false)
+  const [reviewForm, setReviewForm] = useState(false)
 
   useEffect(() =>{
     fetch('/vehicles')
@@ -65,6 +66,8 @@ function App() {
 
   console.log("App's cart data", currentCart)
 
+  console.log('reviewForm state in App: ', reviewForm)
+
   
 
   return (
@@ -83,7 +86,9 @@ function App() {
 
         <Route path="/logged-out" element={<LogoutScreen />}/>
 
-        <Route path="car-detail/:id" element={<CarDetail setIsInCart={setIsInCart} currentCart={currentCart} setCurrentCart={setCurrentCart} renderEditForm={renderEditForm} setRenderEditForm={setRenderEditForm}/>}/>
+        <Route path="car-detail/:id" element={
+        <CarDetail setIsInCart={setIsInCart} currentCart={currentCart} 
+        setCurrentCart={setCurrentCart} renderEditForm={renderEditForm} setRenderEditForm={setRenderEditForm} reviewForm={reviewForm} setReviewForm={setReviewForm}/>}/>
 
         <Route path="/testing" element={<h1>Test Route</h1>}/>
 
