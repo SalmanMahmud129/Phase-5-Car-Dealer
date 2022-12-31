@@ -7,7 +7,7 @@ import ReviewContainer from './ReviewContainer'
 import { Button } from 'antd';
 import ReviewForm from './ReviewForm'
 
-function CarDetail({currentCart, setCurrentCart,setIsInCart, renderEditForm, setRenderEditForm, reviewForm, setReviewForm}) {
+function CarDetail({isInCart, currentCart, setCurrentCart,setIsInCart, renderEditForm, setRenderEditForm, reviewForm, setReviewForm}) {
 
     // console.log("Car Detail's cart data", currentCart)
     // console.log(clickedCar)
@@ -38,7 +38,7 @@ function CarDetail({currentCart, setCurrentCart,setIsInCart, renderEditForm, set
     })
     .then(resp => resp.json())
     .then(addedCar => {
-      setIsInCart(true)
+      setIsInCart(!isInCart)
       setCurrentCart({...currentCart, cart_vehicles: [...currentCart.cart_vehicles, addedCar]})}
       )
   }
@@ -48,7 +48,7 @@ function CarDetail({currentCart, setCurrentCart,setIsInCart, renderEditForm, set
       method: "DELETE"
     })
     .then(() =>{
-    setIsInCart(false)
+    setIsInCart(!isInCart)
     setCurrentCart({...currentCart, cart_vehicles: [currentCart.cart_vehicles.filter(item => item.vehicle_id !== id)]})
   }
     )
@@ -70,7 +70,7 @@ function CarDetail({currentCart, setCurrentCart,setIsInCart, renderEditForm, set
   <button onClick={() => removeFromCart(carDetails)}>Remove From Cart</button> : 
   <button onClick={() => addToCart(carDetails)}>Add to Cart</button>
 
-  const editButton = isAdmin ? <Button type='primary' onClick={() => editForm()}>Edit</Button> : null
+  const editButton = isAdmin === "true" ? <Button type='primary' onClick={() => editForm()}>Edit</Button> : null
  
 
 

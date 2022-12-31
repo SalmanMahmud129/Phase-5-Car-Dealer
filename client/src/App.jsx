@@ -87,7 +87,7 @@ function App() {
         <Route path="/logged-out" element={<LogoutScreen />}/>
 
         <Route path="car-detail/:id" element={
-        <CarDetail setIsInCart={setIsInCart} currentCart={currentCart} 
+        <CarDetail isInCart={isInCart} setIsInCart={setIsInCart} currentCart={currentCart} 
         setCurrentCart={setCurrentCart} renderEditForm={renderEditForm} setRenderEditForm={setRenderEditForm} reviewForm={reviewForm} setReviewForm={setReviewForm}/>}/>
 
         <Route path="/testing" element={<h1>Test Route</h1>}/>

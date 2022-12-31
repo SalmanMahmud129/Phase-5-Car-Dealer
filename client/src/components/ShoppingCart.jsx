@@ -26,7 +26,7 @@ function ShoppingCart({isInCart, setIsInCart, currentCart, setCurrentCart}) {
       method: "DELETE"
     })
     .then(() =>{
-    setIsInCart(false)
+    setIsInCart(!isInCart)
     setCurrentCart({...currentCart, cart_vehicles: [currentCart.cart_vehicles.filter(item => item.vehicle_id !== id)]})
   }
     )  
