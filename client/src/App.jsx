@@ -36,6 +36,7 @@ function App() {
   const [renderVehicles, setRenderVehicles] = useState(false)
   const [renderEditForm, setRenderEditForm] = useState(false)
   const [reviewForm, setReviewForm] = useState(false)
+  
 
   useEffect(() =>{
     fetch('/vehicles')
@@ -50,7 +51,7 @@ function App() {
     .then(cartData => {
       console.log("Current Cart Fetches in app")
       setCurrentCart(cartData)})
-  }, [isInCart,currentUser])
+  }, [isInCart,currentUser,reviewForm])
 
   useEffect(() =>{
     fetch(`/users/${currentUser}`)

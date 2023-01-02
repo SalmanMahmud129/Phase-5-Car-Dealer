@@ -1,3 +1,3 @@
 class ReviewVehicleSerializer < ActiveModel::Serializer
-  attributes :id, :make, :model, :year
+  attributes :star_rating, :content, :user_id, :vehicle_id
 end
