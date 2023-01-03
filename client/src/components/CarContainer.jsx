@@ -5,7 +5,9 @@ function CarContainer({carData, setRenderVehicles, renderVehicles}) {
 
   const eachCar = carData.map(car => <CarItem key={car.id} car={car} setRenderVehicles={setRenderVehicles} renderVehicles={renderVehicles}/>)
   return (
-    <div>CarContainer {eachCar}</div>
+    <>
+    <div className='carContainer'>{eachCar}</div>
+    </>
   )
 }
 

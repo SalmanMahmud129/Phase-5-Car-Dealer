@@ -93,6 +93,23 @@
   margin-right: 25%;
   background-color: rgba(255, 0, 0, 0.2);
 }
+.carContainer{
+  height: 75%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  /* overflow: auto;
+  overflow-y: scroll;
+  scroll-behavior: auto; */
+  flex-direction: column;
+  max-width: 1200px;
+  /* max-height: 700px; */
+  border-style: dotted;
+}
+
+
+
 
 /* sign up page */
 

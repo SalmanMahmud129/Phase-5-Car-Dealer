@@ -20,6 +20,7 @@ function AddVehicle({renderVehicles, setRenderVehicles}) {
     const [transmission, setTransmission] = useState("Automatic")
     console.log(transmission)
     const [price, setPrice] = useState(null)
+    const [photo, setPhoto] = useState(null)
 
 
 
@@ -30,24 +31,40 @@ function AddVehicle({renderVehicles, setRenderVehicles}) {
 
     const [errors, setErrors] = useState([])
 
+    
+
     function handleSubmit(e){
         e.preventDefault()
 
-        const newVehicle = {
-            ...formData,
-            year: year,
-            transmission: transmission,
-            price: price
-        }
+        // const newVehicle = {
+        //     ...formData,
+        //     year: year,
+        //     transmission: transmission,
+        //     price: price
+        // }
 
-        console.log('newVehicle', newVehicle)
+
+        const newFormData = new FormData()
+        newFormData.append("make", formData.make)
+        newFormData.append("model", formData.model)
+        newFormData.append("color", formData.color)
+        newFormData.append("year", year)
+        newFormData.append("transmission", transmission)
+        newFormData.append("price", parseInt(price))
+        newFormData.append("photo", photo)
+
+
+
+
+
+        // console.log('newVehicle', newVehicle)
 
         fetch('/vehicles', {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(newVehicle)
+            // headers: {
+            //     "Content-Type": "application/json"
+            // },
+            body: newFormData
         })
         .then(resp => {
             if(resp.ok){
@@ -56,12 +73,21 @@ function AddVehicle({renderVehicles, setRenderVehicles}) {
                     navigate('/')})
             } else{
                 resp.json().then(data => {
-                    console.log(data.errors)
+                    console.log(data)
                     setErrors(data.errors)
                 })
             }
         })
     }
+
+
+    // function handleFiles(e){
+    //     console.log(e.target.files)
+    //     let filesArr = []
+    //     setPhotos(Object.values(e.target.files))
+    // }
+
+    console.log('photos:', photo)
   return (
     <>
     <br></br>
@@ -117,6 +143,8 @@ function AddVehicle({renderVehicles, setRenderVehicles}) {
             <br></br>
             <br></br>
             <br></br>
+
+            <input type="file" name="filefield"  onChange={(e) => setPhoto(e.target.files[0])}></input>
             
             <div>
             <input className="login-buttons" type='submit' value='Add Vehicle' />

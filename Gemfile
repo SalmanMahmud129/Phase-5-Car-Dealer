@@ -58,3 +58,13 @@ gem 'byebug'
 gem 'faker'
 
 gem "active_model_serializers", "~> 0.10.13"
+
+gem "image_processing", "~> 1.12"
+
+gem "aws-sdk-s3", require: false
+
+gem "activestorage", "~> 7.0"
+
+gem "mini_magick"
+
+

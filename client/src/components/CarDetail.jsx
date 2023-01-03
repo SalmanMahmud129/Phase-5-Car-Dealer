@@ -87,6 +87,8 @@ console.log('reviewForm state in Car Detail: ', reviewForm)
     <div>
       <span>${carDetails.price}</span>
     </div>
+    <img src={carDetails.image} alt="Vehicle" />
+    
     
     
     {/* {clickedCar.reviews ? displayReviews : null} */}

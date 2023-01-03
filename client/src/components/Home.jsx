@@ -34,12 +34,22 @@ console.log('userData', userData)
   }
 
   //---------------checkbox filter styling ----------\\
+    //---------------review box styling ----------\\
+
+    const reviewBoxStyle = {
+      position: "absolute",
+      right: "80px"
+    }
+  
+    //---------------review box styling ----------\\
 
   return (
     <>
     {currentUser ? <h1>Welcome, {userData.username}!</h1> : null }
     <div style={checkBoxFilterStyle}><CheckBox carData={carData}/></div>
+    <div style={reviewBoxStyle}>Reviews will go here</div>
     <SearchBar search={search} setSearch={setSearch}/>
+    <br></br>
     <CarContainer carData={searchedCars} setRenderVehicles={setRenderVehicles} renderVehicles={renderVehicles}/>
     </>
   )
