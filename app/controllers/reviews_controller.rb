@@ -24,6 +24,12 @@ class ReviewsController < ApplicationController
         head :no_content
     end
 
+    # def destroy_review
+    #     byebug
+    #     @review.destroy
+    #     head :no_content
+    # end
+
 
 
     private 

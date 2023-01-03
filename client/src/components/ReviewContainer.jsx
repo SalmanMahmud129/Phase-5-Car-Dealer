@@ -5,18 +5,24 @@ import {StarTwoTone, StarFilled} from '@ant-design/icons'
 
 
 
-function ReviewContainer({carDetails}){
+function ReviewContainer({carDetails, renderReviews, setRenderReviews, setRenderVehicles, renderVehicles}){
 
     const currentUser = localStorage.getItem("user_id")
 
     function handleDelete(review){
-      console.log("deleted")
+      console.log("review.id", review.id)
+      fetch(`reviews/${review.id}`, {
+        method: "DELETE"
+      })
+      setRenderReviews(!renderReviews)
+      // .then(() => setRenderReviews(!renderReviews))
+      // .then(() => setRenderVehicles(!renderVehicles))
     }
 
     
-
+    console.log('carDetails:', carDetails)
     const displayReviews = carDetails.reviews?.map(review =>{ 
-        console.log("review user id", review.user_id)
+        console.log("review id", review.id)
         console.log('currentUser', parseInt(currentUser))
 
         //conditionally render within the map a delete button depending on if the review belongs to the 

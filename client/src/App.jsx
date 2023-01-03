@@ -36,6 +36,8 @@ function App() {
   const [renderVehicles, setRenderVehicles] = useState(false)
   const [renderEditForm, setRenderEditForm] = useState(false)
   const [reviewForm, setReviewForm] = useState(false)
+  const [reviews, setReviews] = useState([])
+  const [renderReviews, setRenderReviews] = useState(false)
   
 
   useEffect(() =>{
@@ -51,7 +53,7 @@ function App() {
     .then(cartData => {
       console.log("Current Cart Fetches in app")
       setCurrentCart(cartData)})
-  }, [isInCart,currentUser,reviewForm])
+  }, [isInCart,currentUser,reviewForm, renderReviews])
 
   useEffect(() =>{
     fetch(`/users/${currentUser}`)
@@ -61,6 +63,14 @@ function App() {
     } )
   }, [currentUser,isAdmin, toggleLogin])
 
+  useEffect(() =>{
+    fetch('/reviews')
+    .then(resp => resp.json())
+    .then(reviews =>{
+      setReviews(reviews)
+    })
+  }, [renderReviews])
+
   console.log(userData)
 
   console.log(carData)
@@ -68,6 +78,8 @@ function App() {
   console.log("App's cart data", currentCart)
 
   console.log('reviewForm state in App: ', reviewForm)
+
+  console.log('renderReviews', renderReviews)
 
   
 
@@ -88,7 +100,7 @@ function App() {
         <Route path="/logged-out" element={<LogoutScreen />}/>
 
         <Route path="car-detail/:id" element={
-        <CarDetail isInCart={isInCart} setIsInCart={setIsInCart} currentCart={currentCart} 
+        <CarDetail isInCart={isInCart} setIsInCart={setIsInCart} currentCart={currentCart} renderReviews={renderReviews} setRenderReviews={setRenderReviews} renderVehicles={renderVehicles} setRenderVehicles={setRenderVehicles}
         setCurrentCart={setCurrentCart} renderEditForm={renderEditForm} setRenderEditForm={setRenderEditForm} reviewForm={reviewForm} setReviewForm={setReviewForm}/>}/>
 
         <Route path="/testing" element={<h1>Test Route</h1>}/>

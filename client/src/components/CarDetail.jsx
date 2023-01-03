@@ -7,7 +7,7 @@ import ReviewContainer from './ReviewContainer'
 import { Button } from 'antd';
 import ReviewForm from './ReviewForm'
 
-function CarDetail({isInCart, currentCart, setCurrentCart,setIsInCart, renderEditForm, setRenderEditForm, reviewForm, setReviewForm}) {
+function CarDetail({isInCart, currentCart, setCurrentCart,setIsInCart, renderEditForm, setRenderEditForm, reviewForm, setReviewForm, renderReviews, setRenderReviews, renderVehicles,setRenderVehicles}) {
 
     // console.log("Car Detail's cart data", currentCart)
     // console.log(clickedCar)
@@ -101,7 +101,7 @@ console.log('reviewForm state in Car Detail: ', reviewForm)
     <br></br>
     <div>
       <p style={{marginRight: '150px'}} >Reviews:</p>
-      <ReviewContainer carDetails={carDetails}/>
+      <ReviewContainer renderVehicles={renderVehicles} setRenderVehicles={setRenderVehicles} renderReviews={renderReviews} setRenderReviews={setRenderReviews} carDetails={carDetails}/>
       {currentUser ? <Button style={{marginLeft: '150px'}} type='primary' onClick={() => renderReviewForm()}>Leave a Review</Button>: null}
       {reviewForm ? <ReviewForm reviewForm={reviewForm} setReviewForm={setReviewForm}/> : null}
     </div>

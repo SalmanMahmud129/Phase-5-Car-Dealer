@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import CarContainer from './CarContainer'
 import CheckBox from './CheckBox'
 import SearchBar from './SearchBar'
+import ReviewsAtHome from './ReviewsAtHome'
 
 function Home({userData, carData, setCurrentCart, setRenderVehicles, renderVehicles }) {
   const currentUser = localStorage.getItem("user_id")
@@ -47,7 +48,7 @@ console.log('userData', userData)
     <>
     {currentUser ? <h1>Welcome, {userData.username}!</h1> : null }
     <div style={checkBoxFilterStyle}><CheckBox carData={carData}/></div>
-    <div style={reviewBoxStyle}>Reviews will go here</div>
+    <div style={reviewBoxStyle}><ReviewsAtHome/></div>
     <SearchBar search={search} setSearch={setSearch}/>
     <br></br>
     <CarContainer carData={searchedCars} setRenderVehicles={setRenderVehicles} renderVehicles={renderVehicles}/>
