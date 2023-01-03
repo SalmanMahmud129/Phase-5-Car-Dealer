@@ -12,6 +12,22 @@ class Vehicle < ApplicationRecord
     validates :transmission, presence: true 
 
     has_one_attached :photo
+
+    def height
+        file.metadata['height']
+    end
+
+    def width
+        file.metadata['width']
+    end
+
+
+    private
+
+    def save_dimensions_now
+        file.analyze if file.attached?
+    end
+    
     
     # validate :photo_format
 
