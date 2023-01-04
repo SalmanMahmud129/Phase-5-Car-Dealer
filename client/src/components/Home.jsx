@@ -7,38 +7,47 @@ import ReviewsAtHome from './ReviewsAtHome'
 
 function Home({userData, carData, setCurrentCart, setRenderVehicles, renderVehicles }) {
   const currentUser = localStorage.getItem("user_id")
-  const [makeFilter, setMakeFilter] = useState(false)
-  const [colorFilter, setColorFilter] = useState(false)
-  const [transmissionFilter, setTransmissionFilter] = useState(false)
+  
   const [search, setSearch] = useState("")
+  const [makesFilters, setMakesFilters] = useState([])
+  const [colorFilters, setColorFilters] = useState([])
+  const [transmissionFilters, setTransmissionFilters] = useState([])
 
 
-  const onMakeChange = () => {
-    setMakeFilter(!makeFilter)
-  }
-
-  const onColorChange = () => {
-    setColorFilter(!colorFilter)
-  }
-
-  const onTransmissionChange = () => {
-    setTransmissionFilter(!transmissionFilter)
-  }
-
-
-  const searchedCars = carData.filter((car) => {
-    if(car.make.toLowerCase().includes(search.toLowerCase()) || car.model.toLowerCase().includes(search.toLowerCase())){
-      return car
+  const onMakeChange = (action, make) => {
+    if(action === "add"){
+      setMakesFilters([...makesFilters, make])
+    }else{
+      setMakesFilters((makes) =>makes.filter(stateMake => stateMake !== make))
     }
-    // if(car)
   }
-  )
+
+  const onColorChange = (action, color) => {
+    if(action === "add"){
+    setColorFilters([...colorFilters, color])
+  }else{
+    setColorFilters((colors) => colors.filter(stateColor => stateColor !== color))
+  }
+  }
+
+  const onTransmissionChange = (action, transmission) => {
+    if(action === "add"){
+      setTransmissionFilters([...transmissionFilters, transmission])
+    }else{
+      setTransmissionFilters((transmissions) => transmissions.filter(stateTransmission => stateTransmission !== transmission))
+    }
+  }
 
 
-console.log('userData', userData)
-console.log('makeFilter:', makeFilter)
-console.log('colorFilter:', colorFilter)
-console.log('transmissionFilter:', transmissionFilter)
+  
+
+
+
+
+// console.log('userData', userData)
+// console.log('makeFilter:', makeFilter)
+// console.log('colorFilter:', colorFilter)
+// console.log('transmissionFilter:', transmissionFilter)
 
   
 
@@ -61,14 +70,16 @@ console.log('transmissionFilter:', transmissionFilter)
   
     //---------------review box styling ----------\\
 
+    console.log('makesFilters', makesFilters)
+
   return (
     <>
     {currentUser ? <h1>Welcome, {userData.username}!</h1> : null }
-    <div style={checkBoxFilterStyle}><CheckBox carData={carData} makeFilter={makeFilter} setMakeFilter={setMakeFilter} colorFilter={colorFilter} setColorFilter={setColorFilter} transmissionFilter={transmissionFilter} setTransmissionFilter={setTransmissionFilter} onMakeChange={onMakeChange} onTransmissionChange={onTransmissionChange} onColorChange={onColorChange} /></div>
+    <div style={checkBoxFilterStyle}><CheckBox carData={carData}  onMakeChange={onMakeChange} onColorChange={onColorChange} onTransmissionChange={onTransmissionChange}/></div>
     <div style={reviewBoxStyle}><ReviewsAtHome/></div>
     <SearchBar search={search} setSearch={setSearch}/>
     <br></br>
-    <CarContainer carData={searchedCars} setRenderVehicles={setRenderVehicles} renderVehicles={renderVehicles}/>
+    <CarContainer carData={carData} setRenderVehicles={setRenderVehicles} renderVehicles={renderVehicles} makesFilters={makesFilters} colorFilters={colorFilters} transmissionFilters={transmissionFilters} search={search}/>
     
     </>
   )

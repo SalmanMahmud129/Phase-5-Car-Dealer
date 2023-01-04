@@ -1,16 +1,16 @@
 import React, {useState} from 'react'
+import IndividualCheckBoxes from './IndividualCheckBoxes'
 
-function CheckBox({makeFilter, setMakeFilter, colorFilter, setColorFilter, transmissionFilter, setTransmissionFilter, onMakeChange, onColorChange, onTransmissionChange, carData}) {
+function CheckBox({ onMakeChange, onColorChange, onTransmissionChange, carData}) {
 
   // const [makesArr, setMakesArr] = useState([])
   const makesArr = []
   const colorsArr = []
   const transmissionsArr = []
 
-  const [makeFilter, setMakeFilter] = useState(false)
-  const [colorFilter, setColorFilter] = useState(false)
-  const [transmissionFilter, setTransmissionFilter] = useState(false)
-
+  const [checked, setChecked] = useState(false)
+  
+  
 
   //----------- logic for generating make checkboxes -----------------//
   carData.map(car =>{
@@ -22,16 +22,22 @@ function CheckBox({makeFilter, setMakeFilter, colorFilter, setColorFilter, trans
 
   const uniqueMakes = [...new Set(makesArr)]
 
+
   console.log('uniqueMakes: ', uniqueMakes)
 
   const makes = uniqueMakes.map(make =>{
     return(
-    <div>
-      <label>{make}
-      <input type="checkbox" name={make} checked={makeFilter} onChange={onMakeChange} ></input>
-      </label>
-    </div>
-    )})
+      <IndividualCheckBoxes key={make} data={make} type={"make"} onMakeChange={onMakeChange}/>
+    )
+  })
+  // const makes = uniqueMakes.map(make =>{
+  //   return(
+  //   <div>
+  //     <label>{make}
+  //     <input type="checkbox" name={make} checked={checked} onChange={onMakeChange} ></input>
+  //     </label>
+  //   </div>
+  //   )})
 
   console.log("make checkboxes", makes)
   //----------- logic for generating make checkboxes -----------------//
@@ -48,13 +54,19 @@ function CheckBox({makeFilter, setMakeFilter, colorFilter, setColorFilter, trans
 
   const colors = uniqueColors.map(color =>{
     return(
-      <div>
-        <label>{color}
-        <input type="checkbox" name={color} checked={colorFilter} onChange={onColorChange}></input>
-        </label>
-      </div>
+      <IndividualCheckBoxes key={color} data={color} type={"color"} onColorChange={onColorChange}/>
     )
   })
+
+  // const colors = uniqueColors.map(color =>{
+  //   return(
+  //     <div>
+  //       <label>{color}
+  //       <input type="checkbox" name={color} checked={checked} onChange={onColorChange}></input>
+  //       </label>
+  //     </div>
+  //   )
+  // })
   //----------- logic for generating color checkboxes -----------------//
   
 
@@ -67,13 +79,19 @@ function CheckBox({makeFilter, setMakeFilter, colorFilter, setColorFilter, trans
 
   const transmissions = uniqueTransmissions.map(transmission =>{
     return(
-    <div>
-      <label>{transmission}
-      <input type="checkbox" name={transmission} checked={transmissionFilter} onChange={onTransmissionChange}></input>
-      </label>
-    </div>
+      <IndividualCheckBoxes key={transmission} data={transmission} type={"transmission"} onTransmissionChange={onTransmissionChange}/>
     )
   })
+
+  // const transmissions = uniqueTransmissions.map(transmission =>{
+  //   return(
+  //   <div>
+  //     <label>{transmission}
+  //     <input type="checkbox" name={transmission} checked={checked} onChange={onTransmissionChange}></input>
+  //     </label>
+  //   </div>
+  //   )
+  // })
   //----------- logic for generating transmission checkboxes -----------------//
 
 
