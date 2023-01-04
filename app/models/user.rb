@@ -2,7 +2,7 @@ class User < ApplicationRecord
     has_many :reviews, dependent: :destroy
     has_many :vehicles, through: :reviews
 
-    has_one :shopping_cart
+    has_one :shopping_cart, dependent: :destroy
 
     has_secure_password
     validates :username, presence: true
