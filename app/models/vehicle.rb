@@ -1,7 +1,7 @@
 class Vehicle < ApplicationRecord
     has_many :reviews, dependent: :destroy
     has_many :users, through: :reviews
-    has_many :cart_vehicles
+    has_many :cart_vehicles, :dependent :destroy
     has_many :shopping_carts, through: :cart_vehicles
     
     validates :make, presence: true
