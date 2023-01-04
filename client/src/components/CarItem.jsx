@@ -26,7 +26,7 @@ function CarItem({car, setRenderVehicles, renderVehicles}) {
     console.log('car', car)
   return (
     <Space size={[10,16]} wrap>
-      <Card hoverable style={{width: 240, marginLeft: "auto", marginRight: "auto"}} cover={<div style={{ overflow: "hidden", height: "150px",  }}><img alt="vehicle" style={{height: "100%"}}src={image} /></div>} >
+      <Card hoverable style={{width: 270, marginLeft: "auto", marginRight: "auto"}} cover={<div style={{ overflow: "hidden", height: "150px"  }}><img alt="vehicle" style={{height: "100%"}}src={image} /></div>} >
         <Meta title={make} description={model}/>
         <Meta title={year}/>
         <br></br>

@@ -75,18 +75,18 @@ function App() {
 
   console.log(carData)
 
-  console.log("App's cart data", currentCart)
+  console.log("App's cart data", currentCart.cart_vehicles?.length)
 
   console.log('reviewForm state in App: ', reviewForm)
 
   console.log('renderReviews', renderReviews)
 
-  
+  const cartLength = currentCart.cart_vehicles?.length
 
   return (
     <div className="App">
 
-      <Navbar setToggleLogin={setToggleLogin}/>
+      <Navbar setToggleLogin={setToggleLogin} cartLength={cartLength}/>
       <Routes>
 
         <Route path="/" element={<Home userData={userData} carData={carData} currentCart={currentCart} renderVehicles={renderVehicles} setRenderVehicles={setRenderVehicles}  />}/>
@@ -109,7 +109,7 @@ function App() {
 
         <Route path="/payment-form" element={<PaymentForm />} />
 
-        <Route path="/payment-complete" element={<PaymentCompletePage />} />
+        <Route path="/payment-complete" element={<PaymentCompletePage isInCart={isInCart} setIsInCart={setIsInCart} />} />
 
         <Route path='add-vehicle' element={<AddVehicle renderVehicles={renderVehicles} setRenderVehicles={setRenderVehicles}/>} />
           

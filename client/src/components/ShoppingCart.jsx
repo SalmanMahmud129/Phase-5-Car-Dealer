@@ -45,7 +45,16 @@ function ShoppingCart({isInCart, setIsInCart, currentCart, setCurrentCart}) {
     </li>
     )
   })
-
+  
+  function clearCart(){
+    fetch("/clear-cart", {
+      method: "DELETE"
+    })
+    .then(() =>{
+      setIsInCart(!isInCart)
+      // setCurrentCart({...currentCart, cart_vehicles: [currentCart.cart_vehicles.filter(item => item.vehicle_id !== id)]})
+    })
+}
 
   // const calculateTotal = Object.values(currentCart.cart_vehicles.vehicle)
 
@@ -82,6 +91,8 @@ function ShoppingCart({isInCart, setIsInCart, currentCart, setCurrentCart}) {
 
       <span>Total: {currentCart.total_amount}</span>
       <button onClick={handleClick}>Pay Now</button>
+      <button onClick={clearCart}>Clear Cart</button>
+
 
       <div>
         {clientSecret && (

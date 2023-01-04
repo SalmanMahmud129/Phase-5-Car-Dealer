@@ -21,6 +21,16 @@ class CartVehiclesController < ApplicationController
         head :no_content
     end
 
+    def remove_all
+        cart_vehicles = CartVehicle.all.where(shopping_cart_id: session[:shopping_cart_id])
+        cart = ShoppingCart.find(session[:shopping_cart_id])
+        cart.total_amount = 0
+        cart.save
+        cart_vehicles.destroy_all
+        head :no_content
+
+    end
+
 
     private 
 

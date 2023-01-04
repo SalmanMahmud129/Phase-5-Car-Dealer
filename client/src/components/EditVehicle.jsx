@@ -54,7 +54,7 @@ function EditVehicle({carDetails, id, setRenderEditForm, renderEditForm}) {
     const radioDefaultValue = carDetails.transmission === "Automatic" ? "a" : "b"
 
   return (
-    <form className='login-form-container' onSubmit={handleSubmit}>
+    <form className='edit-form-container' onSubmit={handleSubmit}>
             <label>
                 Enter Make
             </label>

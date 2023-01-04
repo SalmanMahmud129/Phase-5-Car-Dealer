@@ -1,7 +1,10 @@
+import { BorderRightOutlined } from '@ant-design/icons'
 import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
+import {ShoppingCartOutlined } from '@ant-design/icons'
+import { Badge } from 'antd'
 
-function Navbar({setToggleLogin}) {
+function Navbar({setToggleLogin, cartLength}) {
 
   const navigate = useNavigate()
 
@@ -18,21 +21,37 @@ function Navbar({setToggleLogin}) {
       
   }
 
+  //======================= Nav Styling ==========================\\
+  const navStyle = {
+    backgroundColor: "#282c34",
+    paddingBottom: "10px"
+  }
+
+  //======================= Nav Link Styling ==========================\\
+  const cartLinkStyle = {
+    position: "absolute",
+    right: "100px",
+    top: "0px",
+  }
+
+  const cartStyle = {
+    position: "absolute",
+
+  }
+
   const isLoggedIn= localStorage.getItem("user_id") ? 
-    <li className='active'><NavLink to='logged-out'onClick={handleLogout}>Logout</NavLink></li>
-    : <li className='active'><NavLink to='login'>Login</NavLink></li>
+    <NavLink to='logged-out'onClick={handleLogout}>Logout</NavLink>
+    : <NavLink to='login'>Login</NavLink>
 
   const isAdmin = localStorage.getItem("isAdmin") === "true" ? 
-    <li className='active'><NavLink to='add-vehicle'>Add Vehicle</NavLink></li> : null
+    <NavLink to='add-vehicle'>Add Vehicle</NavLink> : null
   return (
-    <nav className='nav'>
-        <ul>
-        <li className="active"><NavLink to="/">Home</NavLink></li>
-        {isLoggedIn}
-        <li className="active"><NavLink to="/about">About</NavLink></li>
-        <li className="active"><NavLink to="/cart">Your Cart</NavLink></li>
+    <nav style={navStyle} >
+        <NavLink to="/">Home</NavLink>
+        <NavLink style={cartLinkStyle} to="/cart"><ShoppingCartOutlined style={cartStyle}/><Badge count={cartLength}></Badge></NavLink>
         {isAdmin}
-        </ul>
+        {isLoggedIn}
+        
     </nav>
   )
 }

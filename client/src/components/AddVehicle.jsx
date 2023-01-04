@@ -48,7 +48,7 @@ function AddVehicle({renderVehicles, setRenderVehicles}) {
         newFormData.append("make", formData.make)
         newFormData.append("model", formData.model)
         newFormData.append("color", formData.color)
-        newFormData.append("year", year)
+        newFormData.append("year", year.getFullYear(year))
         newFormData.append("transmission", transmission)
         newFormData.append("price", parseInt(price))
         newFormData.append("photo", photo)
@@ -87,7 +87,7 @@ function AddVehicle({renderVehicles, setRenderVehicles}) {
     //     setPhotos(Object.values(e.target.files))
     // }
 
-    console.log('photos:', photo)
+    console.log('year', year.getFullYear(year))
   return (
     <>
     <br></br>

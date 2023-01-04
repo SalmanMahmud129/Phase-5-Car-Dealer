@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  
 }
 
 .App-logo {
@@ -57,6 +56,17 @@
   background-color: rgba(23, 23, 23, 0.972);
   color: white;
 }
+.edit-form-container {
+  /* margin-top: 20%; */
+  width: 500px;
+  margin: 0 auto;
+  padding: 40px;
+  border: 5px solid rgb(62, 53, 160);
+  box-shadow: 0px 0px 5px 1px blue;
+  border-radius: 5px;
+  background-color: rgba(23, 23, 23, 0.972);
+  color: white;
+}
 
 .login-form-inputs{
   display: flex;
@@ -99,14 +109,31 @@
   margin-left: auto;
   margin-right: auto;
   align-items: center;
-  /* overflow: auto;
+  overflow: auto;
   overflow-y: scroll;
-  scroll-behavior: auto; */
+  scroll-behavior: auto;
   flex-direction: column;
   max-width: 1200px;
   /* max-height: 700px; */
   border-style: dotted;
 }
+
+nav a {
+  display: inline-block;
+  margin: 1rem 2rem;
+  text-decoration: none;
+  text-shadow: -1px -1px 0 lightblue, 1px -1px 0 lightblue, -1px 1px 0 lightblue, 1px 1px 0 lightblue;
+  font-size: 3em;
+  color: darkblue;
+  transition: 0.1s;
+
+}
+
+
+nav a:active {
+  border-bottom: 2px solid tomato;
+}
+
 
 
 

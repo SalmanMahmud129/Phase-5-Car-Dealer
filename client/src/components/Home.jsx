@@ -4,6 +4,7 @@ import CheckBox from './CheckBox'
 import SearchBar from './SearchBar'
 import ReviewsAtHome from './ReviewsAtHome'
 
+
 function Home({userData, carData, setCurrentCart, setRenderVehicles, renderVehicles }) {
   const currentUser = localStorage.getItem("user_id")
   const [makeFilter, setMakeFilter] = useState("")
@@ -52,6 +53,7 @@ console.log('userData', userData)
     <SearchBar search={search} setSearch={setSearch}/>
     <br></br>
     <CarContainer carData={searchedCars} setRenderVehicles={setRenderVehicles} renderVehicles={renderVehicles}/>
+    
     </>
   )
 

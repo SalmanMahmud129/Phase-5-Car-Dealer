@@ -4,7 +4,7 @@ import StripeCheckout from 'react-stripe-checkout'
 import { useParams } from 'react-router-dom'
 import EditVehicle from './EditVehicle'
 import ReviewContainer from './ReviewContainer'
-import { Button } from 'antd';
+import { Button, Descriptions} from 'antd';
 import ReviewForm from './ReviewForm'
 
 function CarDetail({isInCart, currentCart, setCurrentCart,setIsInCart, renderEditForm, setRenderEditForm, reviewForm, setReviewForm, renderReviews, setRenderReviews, renderVehicles,setRenderVehicles}) {
@@ -67,8 +67,8 @@ function CarDetail({isInCart, currentCart, setCurrentCart,setIsInCart, renderEdi
 
  
   const cartButton = currentCart.cart_vehicles?.filter(vehicle => vehicle.vehicle_id === carDetails.id).length > 0 ?
-  <button onClick={() => removeFromCart(carDetails)}>Remove From Cart</button> : 
-  <button onClick={() => addToCart(carDetails)}>Add to Cart</button>
+  <Button type="primary" onClick={() => removeFromCart(carDetails)}>Remove From Cart</Button> : 
+  <Button type="primary" onClick={() => addToCart(carDetails)}>Add to Cart</Button>
 
   const editButton = isAdmin === "true" ? <Button type='primary' onClick={() => editForm()}>Edit</Button> : null
  
@@ -79,24 +79,27 @@ console.log("cart total: ",currentCart.total_amount)
 console.log('reviewForm state in Car Detail: ', reviewForm)
   return (
     <>
-    <div>{carDetails.make}</div>
-    <div>{carDetails.model}</div>
-    <div>{carDetails.year}</div>
-    <div>{carDetails.color} </div>
-    <div>{carDetails.transmission}</div>
-    <div>
-      <span>${carDetails.price}</span>
-    </div>
     <img src={carDetails.image} alt="Vehicle" />
     
     
     
     {/* {clickedCar.reviews ? displayReviews : null} */}
+    <div >
+    <Descriptions style={{ paddingLeft: "400px", paddingRight: "400px"}} title="Details" column={2} bordered>
+      <Descriptions.Item label="Make">{carDetails.make}</Descriptions.Item>
+      <Descriptions.Item label="Model">{carDetails.model}</Descriptions.Item>
+      <Descriptions.Item label="Year">{carDetails.year}</Descriptions.Item>
+      <Descriptions.Item label="color">{carDetails.color}</Descriptions.Item>
+      <Descriptions.Item label="Transmission">{carDetails.transmission}</Descriptions.Item>
+      <Descriptions.Item label="Price">${carDetails.price}</Descriptions.Item>
+
+    </Descriptions>
+
+    </div>
+    {/* {displayReviews} */}
     {cartButton}
     {editButton}
     {renderEditForm ? <EditVehicle carDetails={carDetails} id={id} setRenderEditForm={setRenderEditForm} renderEditForm={renderEditForm}/> : null}
-    
-    {/* {displayReviews} */}
     <br></br>
     <br></br>
     <div>

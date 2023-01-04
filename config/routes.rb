@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   delete "/car-detail/reviews/:id", to: "reviews#destroy"
 
+  delete "/clear-cart", to: "cart_vehicles#remove_all"
+
 
 
   # Create payment intent
