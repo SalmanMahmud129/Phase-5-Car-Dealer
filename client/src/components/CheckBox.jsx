@@ -1,11 +1,15 @@
 import React, {useState} from 'react'
 
-function CheckBox({isSelected, onCheckChange, carData}) {
+function CheckBox({makeFilter, setMakeFilter, colorFilter, setColorFilter, transmissionFilter, setTransmissionFilter, onMakeChange, onColorChange, onTransmissionChange, carData}) {
 
   // const [makesArr, setMakesArr] = useState([])
   const makesArr = []
   const colorsArr = []
   const transmissionsArr = []
+
+  const [makeFilter, setMakeFilter] = useState(false)
+  const [colorFilter, setColorFilter] = useState(false)
+  const [transmissionFilter, setTransmissionFilter] = useState(false)
 
 
   //----------- logic for generating make checkboxes -----------------//
@@ -24,7 +28,7 @@ function CheckBox({isSelected, onCheckChange, carData}) {
     return(
     <div>
       <label>{make}
-      <input type="checkbox" name={make} checked={isSelected} onChange={onCheckChange} ></input>
+      <input type="checkbox" name={make} checked={makeFilter} onChange={onMakeChange} ></input>
       </label>
     </div>
     )})
@@ -46,7 +50,7 @@ function CheckBox({isSelected, onCheckChange, carData}) {
     return(
       <div>
         <label>{color}
-        <input type="checkbox" name={color} checked={isSelected} onChange={onCheckChange}></input>
+        <input type="checkbox" name={color} checked={colorFilter} onChange={onColorChange}></input>
         </label>
       </div>
     )
@@ -65,7 +69,7 @@ function CheckBox({isSelected, onCheckChange, carData}) {
     return(
     <div>
       <label>{transmission}
-      <input type="checkbox" name={transmission} checked={isSelected} onChange={onCheckChange}></input>
+      <input type="checkbox" name={transmission} checked={transmissionFilter} onChange={onTransmissionChange}></input>
       </label>
     </div>
     )
