@@ -71,9 +71,9 @@ function App() {
     })
   }, [renderReviews])
 
-  console.log(userData)
+  console.log("User Data", userData)
 
-  console.log(carData)
+  console.log("Car data", carData)
 
   console.log("App's cart data", currentCart.cart_vehicles?.length)
 

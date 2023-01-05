@@ -79,7 +79,7 @@ function Home({userData, carData, setCurrentCart, setRenderVehicles, renderVehic
     <div style={reviewBoxStyle}><ReviewsAtHome/></div>
     <SearchBar search={search} setSearch={setSearch}/>
     <br></br>
-    <CarContainer carData={carData} setRenderVehicles={setRenderVehicles} renderVehicles={renderVehicles} makesFilters={makesFilters} colorFilters={colorFilters} transmissionFilters={transmissionFilters} search={search}/>
+    {carData ? <CarContainer carData={carData} setRenderVehicles={setRenderVehicles} renderVehicles={renderVehicles} makesFilters={makesFilters} colorFilters={colorFilters} transmissionFilters={transmissionFilters} search={search}/> : null}
     
     </>
   )
