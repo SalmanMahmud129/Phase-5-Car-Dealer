@@ -134,6 +134,13 @@ nav a:active {
   border-bottom: 2px solid tomato;
 }
 
+.checkboxes{
+  /* text-align: left; */
+}
+.individual{
+  text-align: right;
+}
+
 
 
 

@@ -100,8 +100,10 @@ function CheckBox({ onMakeChange, onColorChange, onTransmissionChange, carData})
 
 
   return (
-    <div>Filter
-      <div>
+    <div>
+      <div className='checkboxes'>
+      Filter
+      <br></br>
         <h5>By Make:</h5>
         {makes}
         <h5>By Color:</h5>

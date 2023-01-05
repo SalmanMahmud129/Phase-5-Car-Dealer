@@ -79,7 +79,10 @@ console.log("cart total: ",currentCart.total_amount)
 console.log('reviewForm state in Car Detail: ', reviewForm)
   return (
     <>
-    <img src={carDetails.image} alt="Vehicle" />
+    <div style={{ overflow: "hidden", height: "400px"  }}>
+    <img style={{height: "100%"}} src={carDetails.image} alt="Vehicle" />
+
+    </div>
     
     
     

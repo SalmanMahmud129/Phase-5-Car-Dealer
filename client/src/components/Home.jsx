@@ -57,7 +57,8 @@ function Home({userData, carData, setCurrentCart, setRenderVehicles, renderVehic
 
   const checkBoxFilterStyle = {
     position: "absolute",
-    left: "80px"
+    left: "80px",
+    
   }
 
   //---------------checkbox filter styling ----------\\

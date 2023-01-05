@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import PhoneInput from 'react-phone-number-input/input'
 
-function Signup() {
+function Signup({setToggleLogin}) {
 //========================= Styling for Passwords not matching on signup =====================
   const passwordMismatchStyle = {
     textAlign: "center",
@@ -57,6 +57,7 @@ function Signup() {
           resp.json().then(user => {
             localStorage.setItem("user_id", user.id)
             localStorage.setItem("isAdmin", user.admin)
+            setToggleLogin(true)
             setErrors([])
             navigate("/")
           })

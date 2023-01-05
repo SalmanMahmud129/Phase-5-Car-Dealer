@@ -3,6 +3,8 @@ import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from "@stripe/react-stripe-js";
 import { useNavigate } from 'react-router-dom';
 import PaymentForm from './PaymentForm';
+import Card from 'antd/es/card/Card';
+import { Space, Button } from 'antd';
 
 
 
@@ -37,6 +39,7 @@ function ShoppingCart({isInCart, setIsInCart, currentCart, setCurrentCart}) {
   const displayItemsInCart = currentCart?.cart_vehicles?.map((item) =>{
     // console.log('item: ', item)
     return (
+    
     <li>
     {item.vehicle ? item.vehicle.make : null},
     {item.vehicle ? item.vehicle.model : null} , 

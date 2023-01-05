@@ -28,7 +28,7 @@ if(checked){
     setChecked(!checked)
 }
   return (
-    <div>
+    <div className="individual">
       <label>{data}
       <input type="checkbox" name={data} checked={checked} onChange={handleChecked} ></input>
       </label>

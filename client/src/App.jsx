@@ -75,7 +75,7 @@ function App() {
 
   console.log("Car data", carData)
 
-  console.log("App's cart data", currentCart.cart_vehicles?.length)
+  console.log("App's cart data", currentCart.cart_vehicles)
 
   console.log('reviewForm state in App: ', reviewForm)
 
@@ -93,7 +93,7 @@ function App() {
 
         <Route path="/login" element={<Login setToggleLogin={setToggleLogin} />}/>
 
-        <Route path="/signup" element={<Signup />}/>
+        <Route path="/signup" element={<Signup setToggleLogin={setToggleLogin} />}/>
         
         <Route path="/about" element={<About />}/>
 
