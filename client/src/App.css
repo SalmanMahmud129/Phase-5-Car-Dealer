@@ -1,7 +1,16 @@
 .App {
   text-align: center;
+  /* background-color: black; */
+  /* height: 150vh; */
+  /* background-size: cover; */
+  /* padding-bottom: 1500px; */
 }
 
+body{
+  
+  background-color: black;
+  /* overflow: hidden; */
+}
 
 .App-logo {
   height: 40vmin;
@@ -115,8 +124,25 @@
   scroll-behavior: auto;
   flex-direction: column;
   max-width: 1200px;
-  /* max-height: 700px; */
-  border-style: dotted;
+  max-height: 700px;
+  /* border-style: dotted; */
+  background-color: rgba(23, 23, 23, 0.5);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* color: white; */
+  border-radius: 10px;
+}
+
+.carDetail{
+  /* background-color: black; */
+  /* color: white; */
+}
+
+.home{
+  /* background-color: rgba(0, 0, 0, 1); */
+  /* color: white; */
+  height: auto;
+  background: cover;
 }
 
 nav a {

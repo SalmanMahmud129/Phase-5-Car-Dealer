@@ -74,15 +74,16 @@ function Home({userData, carData, setCurrentCart, setRenderVehicles, renderVehic
     console.log('makesFilters', makesFilters)
 
   return (
-    <>
+    <div className='home'>
     {currentUser ? <h1>Welcome, {userData.username}!</h1> : null }
     <div style={checkBoxFilterStyle}><CheckBox carData={carData}  onMakeChange={onMakeChange} onColorChange={onColorChange} onTransmissionChange={onTransmissionChange}/></div>
     <div style={reviewBoxStyle}><ReviewsAtHome/></div>
+    <br></br>
     <SearchBar search={search} setSearch={setSearch}/>
     <br></br>
     {carData ? <CarContainer carData={carData} setRenderVehicles={setRenderVehicles} renderVehicles={renderVehicles} makesFilters={makesFilters} colorFilters={colorFilters} transmissionFilters={transmissionFilters} search={search}/> : null}
     
-    </>
+    </div>
   )
 
   

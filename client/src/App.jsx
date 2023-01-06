@@ -14,6 +14,7 @@ import PaymentForm from './components/PaymentForm';
 import { useParams } from 'react-router-dom';
 import PaymentCompletePage from './components/PaymentCompletePage';
 import 'semantic-ui-css/semantic.min.css'
+
 import AddVehicle from './components/AddVehicle';
 // import { loadStripe } from '@stripe/stripe-js'
 // import { Elements } from "@stripe/react-stripe-js";
@@ -79,7 +80,7 @@ function App() {
 
   console.log('reviewForm state in App: ', reviewForm)
 
-  console.log('reviews', reviews)
+  console.log('reviews', renderReviews)
 
   const cartLength = currentCart.cart_vehicles?.length
 

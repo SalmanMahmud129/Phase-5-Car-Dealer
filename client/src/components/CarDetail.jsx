@@ -78,7 +78,7 @@ function CarDetail({isInCart, currentCart, setCurrentCart,setIsInCart, renderEdi
 console.log("cart total: ",currentCart.total_amount)
 console.log('reviewForm state in Car Detail: ', reviewForm)
   return (
-    <>
+    <div className='carDetail'>
     <div style={{ overflow: "hidden", height: "400px"  }}>
     <img style={{height: "100%"}} src={carDetails.image} alt="Vehicle" />
 
@@ -87,8 +87,8 @@ console.log('reviewForm state in Car Detail: ', reviewForm)
     
     
     {/* {clickedCar.reviews ? displayReviews : null} */}
-    <div >
-    <Descriptions style={{ paddingLeft: "400px", paddingRight: "400px"}} title="Details" column={2} bordered>
+    <div style={{marginLeft: "auto", marginRight: "auto", maxWidth:"1000px"}}>
+    <Descriptions style={{ backgroundColor: "rgba(255, 255, 255, 0.75)", background:"white", borderRadius: "25px"}} title="Details" column={2} bordered>
       <Descriptions.Item label="Make">{carDetails.make}</Descriptions.Item>
       <Descriptions.Item label="Model">{carDetails.model}</Descriptions.Item>
       <Descriptions.Item label="Year">{carDetails.year}</Descriptions.Item>
@@ -113,7 +113,7 @@ console.log('reviewForm state in Car Detail: ', reviewForm)
     </div>
     {/* <button onClick={handleClick}> {renderButtonText} </button> */}
     {/* <div>CarDetail: BUY NOW -------<StripeCheckout token={onToken} stripeKey={process.env.REACT_APP_STRIPE_KEY} /></div> */}
-    </>
+    </div>
   )
 }
 
