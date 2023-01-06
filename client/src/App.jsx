@@ -79,7 +79,7 @@ function App() {
 
   console.log('reviewForm state in App: ', reviewForm)
 
-  console.log('renderReviews', renderReviews)
+  console.log('reviews', reviews)
 
   const cartLength = currentCart.cart_vehicles?.length
 

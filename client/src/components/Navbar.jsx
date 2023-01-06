@@ -1,12 +1,14 @@
 import { BorderRightOutlined } from '@ant-design/icons'
 import React from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate, useLocation} from 'react-router-dom'
 import {ShoppingCartOutlined } from '@ant-design/icons'
 import { Badge } from 'antd'
 
 function Navbar({setToggleLogin, cartLength}) {
 
   const navigate = useNavigate()
+
+  const location = useLocation()
 
 
 
@@ -45,14 +47,33 @@ function Navbar({setToggleLogin, cartLength}) {
 
   const isAdmin = localStorage.getItem("isAdmin") === "true" ? 
     <NavLink to='add-vehicle'>Add Vehicle</NavLink> : null
+  
+  const isLoggedInCart= localStorage.getItem("user_id") ? 
+  <NavLink style={cartLinkStyle} to="/cart"><ShoppingCartOutlined style={cartStyle}/><Badge count={cartLength}></Badge></NavLink>
+    : null
+
+
+  const renderNavBar = location.pathname === "/logged-out" || location.pathname === "/login" || location.pathname === "/payment-complete" || location.pathname === "/signup" ? null : 
+  <nav style={navStyle} >
+    <NavLink to="/">Home</NavLink>
+    
+    {isAdmin}
+    {isLoggedIn}
+    {isLoggedInCart}   
+  </nav>
+
+console.log("location.pathname", location.pathname === "/logged-out")
   return (
-    <nav style={navStyle} >
-        <NavLink to="/">Home</NavLink>
-        <NavLink style={cartLinkStyle} to="/cart"><ShoppingCartOutlined style={cartStyle}/><Badge count={cartLength}></Badge></NavLink>
-        {isAdmin}
-        {isLoggedIn}
+    <>
+    {renderNavBar}
+    </>
+    // <nav style={navStyle} >
+    //     <NavLink to="/">Home</NavLink>
+    //     <NavLink style={cartLinkStyle} to="/cart"><ShoppingCartOutlined style={cartStyle}/><Badge count={cartLength}></Badge></NavLink>
+    //     {isAdmin}
+    //     {isLoggedIn}
         
-    </nav>
+    // </nav>
   )
 }
 
