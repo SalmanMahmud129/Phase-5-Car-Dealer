@@ -4,7 +4,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { useNavigate } from 'react-router-dom';
 import PaymentForm from './PaymentForm';
 import Card from 'antd/es/card/Card';
-import { Space, Button } from 'antd';
+import { Space, Button, List} from 'antd';
 
 
 
@@ -40,12 +40,22 @@ function ShoppingCart({isInCart, setIsInCart, currentCart, setCurrentCart}) {
     // console.log('item: ', item)
     return (
     
-    <li>
-    {item.vehicle ? item.vehicle.make : null},
-    {item.vehicle ? item.vehicle.model : null} , 
-    {item.vehicle ? item.vehicle.price : null}
-    <div><button onClick={() => removeFromCart(item.vehicle_id)}>Remove From Cart</button></div> 
-    </li>
+    <List.Item >
+      {item.vehicle ? 
+      <Card title={item.vehicle.make}>
+        {item.vehicle.model}
+        <br></br>
+        ${item.vehicle.price}
+        <br></br>
+        <Button className="redButton" onClick={() => removeFromCart(item.vehicle_id)}>Remove From Cart</Button>
+      </Card> 
+      : null}
+    </List.Item>
+    // {item.vehicle ? item.vehicle.make : null},
+    // {item.vehicle ? item.vehicle.model : null} , 
+    // {item.vehicle ? item.vehicle.price : null}
+    // <div><button onClick={() => removeFromCart(item.vehicle_id)}>Remove From Cart</button></div> 
+    // </li>
     )
   })
   
@@ -84,17 +94,22 @@ function ShoppingCart({isInCart, setIsInCart, currentCart, setCurrentCart}) {
   }
 
   return (
-    <div>
+    <div style={{display: "inline-block"}}>
       <header>
         <h1>Your Cart</h1>
       </header>
-      <ul>
+      <List >
+        {displayItemsInCart}
+      </List>
+      {/* <ul>
          {displayItemsInCart}
-      </ul>
+      </ul> */}
 
-      <span>Total: {currentCart.total_amount}</span>
-      <button onClick={handleClick}>Pay Now</button>
-      <button onClick={clearCart}>Clear Cart</button>
+      <span>Total: ${currentCart.total_amount}</span>
+      <br></br>
+      <Button type='primary' onClick={handleClick}>Pay Now</Button>
+      <br></br>
+      <Button className="redButton" onClick={clearCart}>Clear Cart</Button>
 
 
       <div>

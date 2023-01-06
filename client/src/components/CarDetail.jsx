@@ -67,7 +67,7 @@ function CarDetail({isInCart, currentCart, setCurrentCart,setIsInCart, renderEdi
 
  
   const cartButton = currentCart.cart_vehicles?.filter(vehicle => vehicle.vehicle_id === carDetails.id).length > 0 ?
-  <Button type="primary" onClick={() => removeFromCart(carDetails)}>Remove From Cart</Button> : 
+  <Button className='redButton' onClick={() => removeFromCart(carDetails)}>Remove From Cart</Button> : 
   <Button type="primary" onClick={() => addToCart(carDetails)}>Add to Cart</Button>
 
   const editButton = isAdmin === "true" ? <Button type='primary' onClick={() => editForm()}>Edit</Button> : null
@@ -100,7 +100,7 @@ console.log('reviewForm state in Car Detail: ', reviewForm)
 
     </div>
     {/* {displayReviews} */}
-    {cartButton}
+    {currentUser ? cartButton : null}
     {editButton}
     {renderEditForm ? <EditVehicle carDetails={carDetails} id={id} setRenderEditForm={setRenderEditForm} renderEditForm={renderEditForm}/> : null}
     <br></br>

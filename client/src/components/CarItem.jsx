@@ -32,11 +32,11 @@ function CarItem({car, setRenderVehicles, renderVehicles}) {
         <br></br>
         <Meta title={
         <NavLink to={`/car-detail/${car.id}`} >
-          <Button>Details</Button>
+          <Button type='primary'>Details</Button>
         </NavLink >}/>
         <br></br>
         
-        <Meta title={isAdmin === "true" ? <Button onClick={handleDelete}>Remove Vehicle Listing</Button> : null}/>
+        <Meta title={isAdmin === "true" ? <Button className='redButton' onClick={handleDelete}>Remove Vehicle Listing</Button> : null}/>
         {/* {isAdmin === "true" ? <Button onClick={handleDelete}>Remove Vehicle Listing</Button> : null} */}
       </Card>
     </Space>

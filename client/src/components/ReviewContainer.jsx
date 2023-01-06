@@ -28,7 +28,7 @@ function ReviewContainer({carDetails, renderReviews, setRenderReviews, setRender
         //conditionally render within the map a delete button depending on if the review belongs to the 
         //currently logged in user
         const displayDeleteBtn = parseInt(currentUser) === review.user_id ? 
-        <Button style={{marginLeft: '150px'}} type='primary' onClick={() => handleDelete(review)}>Delete</Button> : null
+        <Button style={{marginLeft: '150px', color: "white", backgroundColor: "red"}} type='primary' onClick={() => handleDelete(review)}>Delete</Button> : null
 
 
 

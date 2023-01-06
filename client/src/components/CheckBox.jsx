@@ -20,7 +20,7 @@ function CheckBox({ onMakeChange, onColorChange, onTransmissionChange, carData})
 
   console.log("makes: ", makesArr)
 
-  const uniqueMakes = [...new Set(makesArr)]
+  const uniqueMakes = [...new Set(makesArr)].sort()
 
 
   console.log('uniqueMakes: ', uniqueMakes)
@@ -50,7 +50,7 @@ function CheckBox({ onMakeChange, onColorChange, onTransmissionChange, carData})
     colorsArr.push(car.color)
   })
 
-  const uniqueColors = [...new Set(colorsArr)]
+  const uniqueColors = [...new Set(colorsArr)].sort()
 
   const colors = uniqueColors.map(color =>{
     return(
@@ -75,7 +75,7 @@ function CheckBox({ onMakeChange, onColorChange, onTransmissionChange, carData})
     transmissionsArr.push(car.transmission)
   })
 
-  const uniqueTransmissions = [...new Set(transmissionsArr)]
+  const uniqueTransmissions = [...new Set(transmissionsArr)].sort()
 
   const transmissions = uniqueTransmissions.map(transmission =>{
     return(
