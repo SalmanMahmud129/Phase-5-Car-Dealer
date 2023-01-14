@@ -1,6 +1,11 @@
+/* *{
+  margin: 0;
+} */
+
 .App {
   text-align: center;
-  /* background-color: black; */
+  background-color: lightblue;
+  height: 100vh;
   /* height: 150vh; */
   /* background-size: cover; */
   /* padding-bottom: 1500px; */
@@ -134,15 +139,16 @@ body{
 }
 
 .carDetail{
-  /* background-color: black; */
+  background-color: lightblue;
   /* color: white; */
 }
 
 .home{
-  /* background-color: rgba(0, 0, 0, 1); */
+  /* background-color: lightblue; */
   /* color: white; */
   height: auto;
   background: cover;
+  /* height: 100vh; */
 }
 
 nav a {
