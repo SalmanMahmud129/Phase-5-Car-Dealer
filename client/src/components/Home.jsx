@@ -5,7 +5,7 @@ import SearchBar from './SearchBar'
 import ReviewsAtHome from './ReviewsAtHome'
 
 
-function Home({userData, carData, setCurrentCart, setRenderVehicles, renderVehicles }) {
+function Home({userData, carData, setCurrentCart, setRenderVehicles, renderVehicles, reviews, renderReviews, setRenderReviews }) {
   const currentUser = localStorage.getItem("user_id")
   
   const [search, setSearch] = useState("")
@@ -76,8 +76,11 @@ function Home({userData, carData, setCurrentCart, setRenderVehicles, renderVehic
   return (
     <div className='home'>
     {currentUser ? <h1>Welcome, {userData.username}!</h1> : null }
+    <br></br>
+  
+
     <div style={checkBoxFilterStyle}><CheckBox carData={carData}  onMakeChange={onMakeChange} onColorChange={onColorChange} onTransmissionChange={onTransmissionChange}/></div>
-    <div style={reviewBoxStyle}><ReviewsAtHome/></div>
+    <div style={reviewBoxStyle}><ReviewsAtHome reviews={reviews} renderReviews={renderReviews} setRenderReviews={setRenderReviews}/></div>
     <br></br>
     <SearchBar search={search} setSearch={setSearch}/>
     <br></br>

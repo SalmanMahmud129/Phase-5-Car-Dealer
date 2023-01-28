@@ -80,7 +80,7 @@ function App() {
 
   console.log('reviewForm state in App: ', reviewForm)
 
-  console.log('reviews', renderReviews)
+  console.log('reviews', reviews)
 
   const cartLength = currentCart.cart_vehicles?.length
 
@@ -90,7 +90,7 @@ function App() {
       <Navbar setToggleLogin={setToggleLogin} cartLength={cartLength}/>
       <Routes>
 
-        <Route path="/" element={<Home userData={userData} carData={carData} currentCart={currentCart} renderVehicles={renderVehicles} setRenderVehicles={setRenderVehicles}  />}/>
+        <Route path="/" element={<Home userData={userData} carData={carData} currentCart={currentCart} renderVehicles={renderVehicles} setRenderVehicles={setRenderVehicles} reviews={reviews} renderReviews={renderReviews} setRenderReviews={setRenderReviews} />}/>
 
         <Route path="/login" element={<Login setToggleLogin={setToggleLogin} />}/>
 
