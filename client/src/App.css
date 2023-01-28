@@ -132,10 +132,10 @@ body{
   max-height: 700px;
   /* border-style: dotted; */
   background-color: rgba(23, 23, 23, 0.5);
+  border-radius: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
   /* color: white; */
-  border-radius: 10px;
 }
 
 .carDetail{
@@ -175,6 +175,12 @@ nav a:active {
   text-align: right;
 }
 
+.checkboxes{
+  background-color: rgba(23, 23, 23, 0.5);
+  border-radius: 10px;
+  color: darkblue;
+  text-shadow: -1px -1px 0 lightblue, 1px -1px 0 lightblue, -1px 1px 0 lightblue, 1px 1px 0 lightblue;
+}
 
 
 

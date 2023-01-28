@@ -1,5 +1,5 @@
 class ReviewSerializer < ActiveModel::Serializer
-  attributes :id, :star_rating, :content, :user_id, :vehicle_id
+  attributes :id, :star_rating, :content, :user_id, :username
 
   def username
     self.object.user.username
