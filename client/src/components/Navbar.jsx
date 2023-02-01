@@ -3,6 +3,7 @@ import React from 'react'
 import { NavLink, useNavigate, useLocation} from 'react-router-dom'
 import {ShoppingCartOutlined } from '@ant-design/icons'
 import { Badge } from 'antd'
+import Logo from '../assets/FlatironLogo.png'
 
 function Navbar({setToggleLogin, cartLength}) {
 
@@ -34,6 +35,7 @@ function Navbar({setToggleLogin, cartLength}) {
     position: "absolute",
     right: "100px",
     top: "0px",
+    
   }
 
   const cartStyle = {
@@ -55,8 +57,8 @@ function Navbar({setToggleLogin, cartLength}) {
 
   const renderNavBar = location.pathname === "/logged-out" || location.pathname === "/login" || location.pathname === "/payment-complete" || location.pathname === "/signup" ? null : 
   <nav style={navStyle} >
+    <div style={{display: "inline-block", position: "absolute", left: "10px"}}><img className="FlatironLogo" src={Logo} /> <p style={{display: "inline-block"}}>Flatiron Vehicles</p></div>
     <NavLink to="/">Home</NavLink>
-    
     {isAdmin}
     {isLoggedIn}
     {isLoggedInCart}   
