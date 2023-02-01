@@ -57,7 +57,7 @@ function Navbar({setToggleLogin, cartLength}) {
 
   const renderNavBar = location.pathname === "/logged-out" || location.pathname === "/login" || location.pathname === "/payment-complete" || location.pathname === "/signup" ? null : 
   <nav style={navStyle} >
-    <div style={{display: "inline-block", position: "absolute", left: "10px"}}><img className="FlatironLogo" src={Logo} /> <p style={{display: "inline-block"}}>Flatiron Vehicles</p></div>
+    <div style={{display: "inline-block", position: "absolute", left: "10px"}}><img className="FlatironLogo" src={Logo} /> <p className="LogoText">Flatiron Dealership</p></div>
     <NavLink to="/">Home</NavLink>
     {isAdmin}
     {isLoggedIn}

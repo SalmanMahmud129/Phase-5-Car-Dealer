@@ -179,6 +179,7 @@ nav a:active {
 .checkboxes{
   background-color: rgba(23, 23, 23, 0.5);
   border-radius: 10px;
+  padding: 20px;
   color: darkblue;
   text-shadow: -1px -1px 0 lightblue, 1px -1px 0 lightblue, -1px 1px 0 lightblue, 1px 1px 0 lightblue;
 }
@@ -190,6 +191,16 @@ nav a:active {
   /* margin-right: 10px; */
   border-radius: 50px;
   /* padding: 1px; */
+}
+
+.LogoText{
+  display: inline-block;
+  color: white;
+  font-family: monospace;
+  font-size: 30px;
+  text-shadow: -1px -1px 0 blue, 1px -1px 0 blue, -1px 1px 0 blue, 1px 1px 0 blue;
+  text-decoration: underline;
+  font-style: italic;
 }
 
 
