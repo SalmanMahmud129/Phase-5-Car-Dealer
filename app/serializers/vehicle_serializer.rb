@@ -1,5 +1,5 @@
 class VehicleSerializer < ActiveModel::Serializer
-  attributes :id, :make, :model, :year, :price, :color, :transmission, :image
+  attributes :id, :make, :model, :year, :price, :color, :transmission, :image, :make_model
   include Rails.application.routes.url_helpers
 
   has_many :reviews, serializer: ReviewUserSerializer
@@ -10,6 +10,11 @@ class VehicleSerializer < ActiveModel::Serializer
     end
   end 
 end
+
+  def make_model
+    make_model = self.make + ' ' + self.model
+    return make_model
+  end
 
   # def images
   #   return unless object.photos.attachments

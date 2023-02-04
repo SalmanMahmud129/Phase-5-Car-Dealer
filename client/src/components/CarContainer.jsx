@@ -17,7 +17,7 @@ function CarContainer({carData, setRenderVehicles, renderVehicles, makesFilters,
 
   
   const filteredCars = filteredTransmissions.filter((car) => {
-    if(car.make.toLowerCase().includes(search.toLowerCase()) || car.model.toLowerCase().includes(search.toLowerCase())){
+    if(car.make_model.toLowerCase().includes(search.toLowerCase())){
       return car
     }
 })
