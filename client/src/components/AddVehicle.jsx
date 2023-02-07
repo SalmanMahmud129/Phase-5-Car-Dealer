@@ -26,7 +26,8 @@ function AddVehicle({renderVehicles, setRenderVehicles}) {
 
     function handleChange(e) {
         const { name, value } = e.target
-        setFormData({ ...formData, [name]: value })
+        // console.log("cap letter: ", value.charAt(0).toUpperCase() + value.slice(1))
+        setFormData({ ...formData, [name]: value.charAt(0).toUpperCase() + value.slice(1) })
     }
 
     const [errors, setErrors] = useState([])

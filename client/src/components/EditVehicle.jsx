@@ -51,6 +51,8 @@ function EditVehicle({carDetails, id, setRenderEditForm, renderEditForm}) {
 
     console.log('carDetails after clicking edit form', carDetails)
 
+    console.log("year: ", year)
+
     const radioDefaultValue = carDetails.transmission === "Automatic" ? "a" : "b"
 
   return (
