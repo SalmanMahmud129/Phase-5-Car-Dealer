@@ -90,7 +90,7 @@ function App() {
       <Navbar setToggleLogin={setToggleLogin} cartLength={cartLength}/>
       <Routes>
 
-        <Route path="/" element={<Home userData={userData} carData={carData} currentCart={currentCart} renderVehicles={renderVehicles} setRenderVehicles={setRenderVehicles} reviews={reviews} renderReviews={renderReviews} setRenderReviews={setRenderReviews} />}/>
+        <Route path="/" element={<Home userData={userData} carData={carData} currentCart={currentCart} renderVehicles={renderVehicles} setRenderVehicles={setRenderVehicles} reviews={reviews} renderReviews={renderReviews} setRenderReviews={setRenderReviews} setRenderEditForm={setRenderEditForm}/>}/>
 
         <Route path="/login" element={<Login setToggleLogin={setToggleLogin} />}/>
 

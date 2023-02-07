@@ -16,6 +16,7 @@ function CarDetail({isInCart, currentCart, setCurrentCart,setIsInCart, renderEdi
     const currentUser = localStorage.getItem("user_id")
     
     
+    
 
     const {id} = useParams()
 

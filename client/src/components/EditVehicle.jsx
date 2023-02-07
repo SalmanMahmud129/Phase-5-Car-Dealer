@@ -14,7 +14,7 @@ function EditVehicle({carDetails, id, setRenderEditForm, renderEditForm}) {
         color: carDetails.color
     })
 
-    const [year, setYear] = useState( carDetails.year)
+    const [year, setYear] = useState( new Date(carDetails.year, 0))
     const [transmission, setTransmission] = useState(carDetails.transmission)
     console.log(transmission)
     const [price, setPrice] = useState(carDetails.price)
@@ -24,7 +24,7 @@ function EditVehicle({carDetails, id, setRenderEditForm, renderEditForm}) {
 
     function handleChange(e) {
         const { name, value } = e.target
-        setFormData({ ...formData, [name]: value })
+        setFormData({ ...formData, [name]: value.charAt(0).toUpperCase() + value.slice(1) })
     }
 
     function handleSubmit(e){
@@ -51,7 +51,7 @@ function EditVehicle({carDetails, id, setRenderEditForm, renderEditForm}) {
 
     console.log('carDetails after clicking edit form', carDetails)
 
-    console.log("year: ", year)
+    console.log("yeartest: ", year)
 
     const radioDefaultValue = carDetails.transmission === "Automatic" ? "a" : "b"
 

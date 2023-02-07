@@ -5,9 +5,12 @@ import SearchBar from './SearchBar'
 import ReviewsAtHome from './ReviewsAtHome'
 
 
-function Home({userData, carData, setCurrentCart, setRenderVehicles, renderVehicles, reviews, renderReviews, setRenderReviews }) {
+function Home({userData, carData, setCurrentCart, setRenderVehicles, renderVehicles, reviews, renderReviews, setRenderReviews, setRenderEditForm }) {
   const currentUser = localStorage.getItem("user_id")
   
+  // set rendereditform to false to prevent invalid date value bug
+  setRenderEditForm(false)
+
   const [search, setSearch] = useState("")
   const [makesFilters, setMakesFilters] = useState([])
   const [colorFilters, setColorFilters] = useState([])

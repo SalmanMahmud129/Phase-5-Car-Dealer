@@ -88,7 +88,7 @@ function AddVehicle({renderVehicles, setRenderVehicles}) {
     //     setPhotos(Object.values(e.target.files))
     // }
 
-    console.log('year', year.getFullYear(year))
+    console.log('year test', year.getFullYear(year))
   return (
     <>
     <br></br>
