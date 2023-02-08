@@ -78,11 +78,6 @@ function Signup({setToggleLogin}) {
   const passwordMatch = misMatch ? <p style={passwordMismatchStyle}>PASSWORDS DO NOT MATCH</p> : null
   return (
     <>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
     <div className='login-container'>
         <form className='login-form-container' onSubmit={handleSubmit}>
         <div>

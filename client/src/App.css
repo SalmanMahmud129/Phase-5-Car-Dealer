@@ -55,6 +55,7 @@ body{
 /* login screen */
 .login-container {
   display: flex;
+  background-color: lightblue;
   /* flex-direction: column;
   align-items: center;
   padding: 50px; */
