@@ -94,7 +94,8 @@ function ShoppingCart({isInCart, setIsInCart, currentCart, setCurrentCart}) {
   }
 
   return (
-    <div style={{display: "inline-block"}}>
+    <div >
+    <div style={{display: "inline-block", backgroundColor: "lightblue"}}>
       <header>
         <h1>Your Cart</h1>
       </header>
@@ -106,20 +107,22 @@ function ShoppingCart({isInCart, setIsInCart, currentCart, setCurrentCart}) {
       </ul> */}
 
       <span>Total: ${currentCart.total_amount}</span>
-      <br></br>
-      <Button type='primary' onClick={handleClick}>Pay Now</Button>
-      <br></br>
+      {/* <br></br> */}
+      <Button type='primary' onClick={handleClick}>Checkout</Button>
+      {/* <br></br> */}
       <Button className="redButton" onClick={clearCart}>Clear Cart</Button>
 
 
-      <div>
+      
+      
+    </div>
+    <div style={{display: "flex", backgroundColor: "lightblue"}}>
         {clientSecret && (
           <Elements options={options} stripe={stripePromise}>
             <PaymentForm/>
           </Elements>
         )}
-      </div>
-      
+    </div>
     </div>
   )
 }
