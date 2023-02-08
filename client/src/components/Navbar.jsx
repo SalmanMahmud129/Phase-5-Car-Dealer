@@ -40,6 +40,7 @@ function Navbar({setToggleLogin, cartLength}) {
 
   const cartStyle = {
     position: "absolute",
+    color: "lightblue"
 
   }
 
