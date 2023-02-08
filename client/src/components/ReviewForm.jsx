@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Rate, Input, Button} from 'antd'
 import { useParams } from 'react-router-dom'
 
-function ReviewForm({reviewForm, setReviewForm}) {
+function ReviewForm({reviewForm, setReviewForm, renderReviews, setRenderReviews}) {
   const [rating, setRating] = useState(null)
   const [content, setContent] = useState("")
   const [errors, setErrors] = useState([])
@@ -37,6 +37,7 @@ function ReviewForm({reviewForm, setReviewForm}) {
       if(resp.ok){
         resp.json().then(() => {
           setReviewForm(!reviewForm)
+          setRenderReviews(!renderReviews)
         })
       } else{
         resp.json().then(data => {

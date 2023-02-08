@@ -102,7 +102,7 @@ function App() {
 
         <Route path="car-detail/:id" element={
         <CarDetail isInCart={isInCart} setIsInCart={setIsInCart} currentCart={currentCart} renderReviews={renderReviews} setRenderReviews={setRenderReviews} renderVehicles={renderVehicles} setRenderVehicles={setRenderVehicles}
-        setCurrentCart={setCurrentCart} renderEditForm={renderEditForm} setRenderEditForm={setRenderEditForm} reviewForm={reviewForm} setReviewForm={setReviewForm}/>}/>
+        setCurrentCart={setCurrentCart} renderEditForm={renderEditForm} setRenderEditForm={setRenderEditForm} reviewForm={reviewForm} setReviewForm={setReviewForm} />}/>
 
         <Route path="/testing" element={<h1>Test Route</h1>}/>
 

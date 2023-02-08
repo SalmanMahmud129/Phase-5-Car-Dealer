@@ -110,7 +110,7 @@ console.log('reviewForm state in Car Detail: ', reviewForm)
       <p style={{marginRight: '150px'}} >Reviews:</p>
       <ReviewContainer renderVehicles={renderVehicles} setRenderVehicles={setRenderVehicles} renderReviews={renderReviews} setRenderReviews={setRenderReviews} carDetails={carDetails}/>
       {currentUser ? <Button style={{marginLeft: '150px'}} type='primary' onClick={() => renderReviewForm()}>Leave a Review</Button>: null}
-      {reviewForm ? <ReviewForm reviewForm={reviewForm} setReviewForm={setReviewForm}/> : null}
+      {reviewForm ? <ReviewForm reviewForm={reviewForm} setReviewForm={setReviewForm} renderReviews={renderReviews} setRenderReviews={setRenderReviews}/> : null}
     </div>
     {/* <button onClick={handleClick}> {renderButtonText} </button> */}
     {/* <div>CarDetail: BUY NOW -------<StripeCheckout token={onToken} stripeKey={process.env.REACT_APP_STRIPE_KEY} /></div> */}
